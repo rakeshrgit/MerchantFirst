@@ -1,0 +1,68 @@
+.account {
+    background-color: rgba(255, 255, 255, 1);
+    //   height: 100vh;
+    height: 100%;
+    overflow: auto;
+    padding: 0 15px;
+    // display: -webkit-box;
+    // display: -ms-flexbox;
+    // display: flex;
+    // -webkit-box-align: center;
+    // -ms-flex-align: center;
+    // align-items: center;
+    // -webkit-box-pack: center;
+    // -ms-flex-pack: center;
+    // justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    .accountAlign {
+      min-height: 100%;
+      width: 100%;
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      padding: 20px 0;
+      .accountInner {
+        width: 100%;
+        background-color:#f7f6f6;
+        max-width: 400px;
+        padding: 20px;
+        // margin: 20px 0;
+        border-radius: 4px;
+        // -webkit-transform: translateY(50px);
+        // transform: translateY(50px);
+        margin: 0 auto;
+        h3 {
+          margin: 0 0 30px 0;
+          font-size: 30px;
+        }
+        p {
+          padding: 0;
+        }
+      }
+    }
+    .form-group{
+      position: relative;
+      .password-icon{
+        position: absolute;
+        right:10px;
+        top: 42px;
+        z-index:11;
+        cursor: pointer;
+      }
+      .form-control {
+        padding-right:40px;
+      }
+      
+    }
+  }
+  

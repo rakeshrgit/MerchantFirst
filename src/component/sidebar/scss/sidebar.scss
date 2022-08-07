@@ -1,0 +1,22 @@
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #24404d;
+    color: #fff;
+    transition: all 0.3s;
+    .sidebar-header{
+        font-size: 26px;
+        font-weight: 700;
+        text-align: center;
+        padding: 19px 0px;
+        background: #ccc;
+        color: #000;
+    }
+    &.active{
+        margin-left:-250px;
+    }
+}

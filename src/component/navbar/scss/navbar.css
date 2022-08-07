@@ -1,0 +1,38 @@
+.navbarmain {
+  width: 100%;
+  background: #ccc;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.navbarmain ul {
+  margin: 0;
+  padding: 18px 22px;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbarmain ul li {
+  margin: 0px 10px 0px 0px;
+}
+
+.navbarmain ul li a {
+  color: #222;
+  text-decoration: none;
+}
+/*# sourceMappingURL=navbar.css.map */

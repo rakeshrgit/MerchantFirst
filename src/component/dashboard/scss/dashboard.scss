@@ -1,0 +1,17 @@
+.d-main{
+    background:#efefef;
+    min-height:calc(100vh - 76px);
+    position:absolute;
+    right:0;
+    top:76px;
+    width:calc(100% - 250px);
+    transition: all 0.3s;
+    &.slide-left{
+        width:100%;
+    }
+    .d-inner{
+        padding:20px 20px 20px 20px;
+    }
+
+
+}
