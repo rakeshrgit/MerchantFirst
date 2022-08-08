@@ -18,14 +18,14 @@ class Dashboard extends Component {
         loading: false,
         error: null,
         show:false,
+        pageSize: 4, // for pagination
+        currentPage:1
      }
      static contextType = ProjectsContext; 
     
  
      componentDidMount() {
         // this.context.getAllProjects();
-        let xms = this.context;
-        console.log('xms',xms);
        this.context.getAllPosts();
       }
       handleDelete = async id => {
@@ -39,9 +39,10 @@ class Dashboard extends Component {
       });
       //console.log(index)
     }
-     handleShow = () =>{
-       // console.log('showdata', item)
-         this.setState({show:true})
+     handleShow = (post) =>{
+       
+         this.setState({show:true, post})
+         // console.log('showdata', post)
      }
      handleModalClose = () =>{
         this.setState({show:false})
@@ -59,15 +60,7 @@ class Dashboard extends Component {
     render() { 
         const{length:count} = this.context.posts;
         const {  isloading , pageSize, currentPage, posts:allPosts} = this.context;
-        // export function getMovies() {
-        //     return posts;
-        //   }
-      
-        //const {currentPage} = this.state;
-        //const {   error, requiredItem } = this.state;
-        //const modalData = posts[requiredItem];
-    
-       const posts = paginate(allPosts, pageSize, currentPage)
+        const posts = paginate(allPosts, currentPage, pageSize)
         
        if (isloading) {
             if(posts.length === 0) return <div>
@@ -86,7 +79,7 @@ class Dashboard extends Component {
                 </div>
                 <section className="d-main">
                     <div className="d-inner">
-                        <p>Showing <strong>{posts.length}</strong> records</p>
+                        <p>Showing <strong>{count}</strong> records</p>
                         <table className="table table-bordered">
                             <thead>
                                 <tr>
@@ -98,25 +91,27 @@ class Dashboard extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    posts.map((item, index) =>
+                                    posts.map((post, index) =>
                                         <tr key={index}>
-                                            <td>{item.title.rendered}</td>
-                                            <td>{renderHTML(item.content.rendered)}</td>
+                                            <td>{post.title.rendered}</td>
+                                            <td>{renderHTML(post.content.rendered)}</td>
                                             {/* <td>{item._embedded.author[0].name}</td> */}
                                             <td>
                                                 <button className="btn btn-primary btn-xs"
                                                     onClick={()=> {
-                                                        this.handleShow(); 
+                                                        this.handleShow(post); 
                                                         this.replaceModalItem(index); 
                                                         
                                                     }}
                                                     >
                                                     <i className="fa fa-pencil"></i>
                                                 </button>
-                                                <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(item.id)}><i className="fa fa-trash"></i></button>
+                                                <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash"></i></button>
                                             </td>
                                             <td>
-                                                <img src={item.img}/>
+                                                
+                                                    <img src={post.img}/>
+                                                
                                             </td>
                                         </tr>
                                     )

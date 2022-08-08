@@ -9,7 +9,7 @@ export function getPageData() {
 }
 
 export function getPosts() {
-    const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts";
+    const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts/?per_page=100";
     return apiService.get(projectsEndpoint);
 }
 

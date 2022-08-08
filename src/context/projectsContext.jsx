@@ -20,7 +20,7 @@ export class ProjectsContext extends Component {
         posts:[],
         pages:[],
         isloading: false,
-        pageSize: 2, // for pagination
+        pageSize: 4, // for pagination
         currentPage:1
         
      };
@@ -44,7 +44,7 @@ export class ProjectsContext extends Component {
           const res2 = await getPostWithImage(res.data);
           //console.log(res2)
           const data = await Promise.all(res2)
-          console.log("data", data)
+          //console.log("data", data)
           this.setState({ posts: data, isloading: true });
 
         } catch (err) {
@@ -71,7 +71,7 @@ export class ProjectsContext extends Component {
 
 
       onDeletePost = async (id) => {
-        console.log('onDeletePost', id)
+        //console.log('onDeletePost', id)
         const posts = this.state.posts;
 
           try {

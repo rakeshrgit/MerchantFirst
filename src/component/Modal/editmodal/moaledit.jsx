@@ -14,8 +14,7 @@ class ModaEdit extends Component {
             title: nextProps.title,
             content: nextProps.content,
             id: nextProps.id,
-           // numberInStock: nextProps.numberInStock,
-           // dailyRentalRate: nextProps.dailyRentalRate,
+           
            
         });
         //console.log('Itemsewweewewe',nextProps)
