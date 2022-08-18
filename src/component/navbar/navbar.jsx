@@ -11,7 +11,7 @@ class Navbar extends Component {
 		 this.setState({isSwitchOn:!this.state.isSwitchOn})
 		 	
 	 }
-
+auth = localStorage.getItem("token");
 	
 	 handleLogout = () => {
 		localStorage.removeItem( 'token' );

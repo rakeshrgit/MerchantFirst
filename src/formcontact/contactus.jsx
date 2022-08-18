@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
-import Form  from '../common/form'
+import Form  from '../common/form';
 class ContactUs extends Form {
     state = { 
         data:{

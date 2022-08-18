@@ -1,38 +1,32 @@
 import React, { Component } from 'react';
 import {Modal, Button, Row, Col, Form} from "react-bootstrap";
-
+import renderHTML from 'react-render-html';
+import RichTextEditor from './../../richtexteditor/richTextEditor';
+import JoditEditor from "jodit-react";
 //import './scss/edit.scss'
+
 class ModaEdit extends Component {
     state = { 
+        id:'',
         title: '',
-        content:'',
-        id:0
+        content:''
      }
     
-    componentWillReceiveProps(nextProps) {
+     componentWillReceiveProps(nextProps) {
         this.setState({
             title: nextProps.title,
-            content: nextProps.content,
-            id: nextProps.id,
-           
-           
+            content:nextProps.content,
+            id:nextProps.id
         });
-        //console.log('Itemsewweewewe',nextProps)
     }
     titleHandler(e) {
         this.setState({ title: e.target.value,  });
     }
-    contentHandler(e) {
-        this.setState({ content: e.target.value,  });
+    contentHandler(content) {
+        this.setState({content});
     }
     handleSave = () => {
-        const item = {
-            title: this.state.title,
-            content: this.state.content,
-            id: this.state.id,
-           // numberInStock: nextProps.numberInStock,
-           // dailyRentalRate: nextProps.dailyRentalRate,
-        }
+        const item = this.state;
         this.props.saveModalDetails(item)
         //console.log('item Name', item)
     }
@@ -54,7 +48,13 @@ class ModaEdit extends Component {
                         <Modal.Body>
                             <div className="form-section">
                                 <div className="form-data"><span className="modal-lable">Title:</span> <input value={this.state.title} onChange={(e) => this.titleHandler(e)}/></div>
-                                <div className="form-data"><span className="modal-lable">Content:</span><textarea value={this.state.content} onChange={(e) => this.contentHandler(e)}></textarea></div>
+                                {/* <div className="form-data"><span className="modal-lable">Content:</span><textarea   value={this.state.content} onChange={(e) => this.contentHandler(e)}></textarea></div> */}
+                            </div>
+                            <div>
+                                <JoditEditor 
+                                    value={this.state.content}
+                                    onBlur={(content) => this.contentHandler(content)}
+                                />
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
@@ -71,4 +71,4 @@ class ModaEdit extends Component {
     }
 }
  
-export default ModaEdit;
+export default ModaEdit;     

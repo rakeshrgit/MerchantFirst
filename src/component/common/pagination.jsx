@@ -5,7 +5,7 @@ const Pagination = props =>{
     const currentPagination = useContext(ProjectsContext)
     const {pageSize, currentPage} = currentPagination;
     const {itemsCount, onPageChange} = props;
-    console.log(currentPage);
+    //console.log(currentPage);
     const pagesCount = Math.ceil(itemsCount / pageSize);
     if (pagesCount === 1) return null;
     const pages = _.range(1, pagesCount + 1);

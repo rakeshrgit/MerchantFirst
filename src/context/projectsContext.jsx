@@ -21,30 +21,24 @@ export class ProjectsContext extends Component {
         pages:[],
         isloading: false,
         pageSize: 4, // for pagination
-        currentPage:1
-        
+        currentPage:1,
+        requiredItem: 0,
+        searchQuery:""
      };
 
      handlePageChange = page => {
       this.setState({ currentPage: page });   
     }; 
     
+    handleSearch = query => {
+      this.setState({ searchQuery: query, currentPage: 1 });
+    };
+
      getAllPosts = async () => {
         try {
-          // await getPosts().then(response => {
-          //   if (response.status === 200) {
-          //     const posts = response.data;
-          //     this.setState({ posts: posts, isloading: true });
-          //     console.log('posts ee',posts);
-          //   }
-           
-          // });
           const res = await getPosts();
-          
           const res2 = await getPostWithImage(res.data);
-          //console.log(res2)
           const data = await Promise.all(res2)
-          //console.log("data", data)
           this.setState({ posts: data, isloading: true });
 
         } catch (err) {
@@ -89,35 +83,30 @@ export class ProjectsContext extends Component {
       onUpdatePost = async (item) => {
        // console.log('onUpdatePost', id)
       //  const posts = this.state.posts;
-
-          try {
+         // console.log('item', item)
+         this.setState({isloading: true }); 
+         try {
             await updatePost(item).then(response => {
               if (response.status) {
-                const posts = [...this.state.posts];
-                const index = posts.indexOf(item);
-                posts[index] = {...item};
-               // this.setState({posts, isloading: true})
-               // console.log('updatePostposts', posts)
+                this.setState({isloading: false }); 
+                this.getAllPosts();
                 toast.success("Post Updated!");
               } else {
+                this.setState({isloading: false }); 
                 toast.error("Post not Updated!");
               }
             });
-          } catch (err) {}
+          } catch (err) {this.setState({isloading: false }); }
       };
       addNewPost = async item => {
         try {
           await createPost(JSON.stringify(item)).then(response => {
-            console.log("addNewPost: ", response);
+           // console.log("addNewPost: ", response);
             if (response.status) {
               
               toast.success("Post Added!");
               this.getAllPosts();
-              // window.location.href = "cdt";
-              // const result = response.data;
-              // item.id = result.data.projectId;
-              // const allProjects = [item, ...this.state.allProjects];
-              // this.setState({ allProjects });
+             
             } else {
               toast.error("post Not Added!");
             }
@@ -137,7 +126,8 @@ export class ProjectsContext extends Component {
                     handlePageChange:this.handlePageChange,
                     onUpdatePost:this.onUpdatePost,
                     addNewPost:this.addNewPost,
-                    getPostWithImage: this.getPostWithImage 
+                    getPostWithImage: this.getPostWithImage ,
+                    handleSearch: this.handleSearch
                 }}
                 
             >

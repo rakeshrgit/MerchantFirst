@@ -10,22 +10,25 @@ import renderHTML from 'react-render-html';
 //import './scss/dashboard.scss';
 import Pagination from '../common/pagination';
 import { paginate } from './../../utils/paginate';
+import SearchBox from './../../common/searchBox';
+import _ from "lodash";
 class Dashboard extends Component {
     state = { 
 
-       requiredItem: 0,
+        requiredItem: 0,
         postid: null,
         loading: false,
         error: null,
         show:false,
-        pageSize: 4, // for pagination
-        currentPage:1
+        //pageSize: 4, // for pagination
+        //currentPage:1
+        
+        
      }
      static contextType = ProjectsContext; 
     
  
      componentDidMount() {
-        // this.context.getAllProjects();
        this.context.getAllPosts();
       }
       handleDelete = async id => {
@@ -37,33 +40,73 @@ class Dashboard extends Component {
       this.setState({
         requiredItem: index
       });
-      //console.log(index)
+    
     }
-     handleShow = (post) =>{
-       
-         this.setState({show:true, post})
-         // console.log('showdata', post)
+     handleShow = (index) =>{
+       this.setState({show:true, index})
+       console.log('post', index) 
      }
      handleModalClose = () =>{
         this.setState({show:false})
      }
   saveModalDetails =  async item => {
-       // console.log('save item', item)
+     
         this.setState({show:false})
         await this.context.onUpdatePost(item);  
       }
       handlePageChange = page => {
         this.context.handlePageChange(page);   
-       //this.setState({currentPage:page});
+       
       };  
        
+      
+    
+
+      getPagedData = () => {
+        const {
+          isloading,  
+          pageSize,
+          currentPage,
+          searchQuery,
+          posts:allPosts
+        } = this.context;
+    
+        let filtered = allPosts;
+        if (searchQuery)
+          filtered = allPosts.filter(m =>
+            m.title.rendered.toLowerCase().startsWith(searchQuery.toLowerCase())
+          );
+        // else if (selectedGenre && selectedGenre._id)
+        //   filtered = allMovies.filter(m => m.genre._id === selectedGenre._id);
+    
+        const sorted = _.orderBy(filtered);
+    
+        const posts = paginate(sorted, currentPage, pageSize);
+    
+        return { totalCount: filtered.length, data: posts };
+      };
+
+
+
     render() { 
-        const{length:count} = this.context.posts;
-        const {  isloading , pageSize, currentPage, posts:allPosts} = this.context;
-        const posts = paginate(allPosts, currentPage, pageSize)
-        
-       if (isloading) {
-            if(posts.length === 0) return <div>
+
+
+    const { length: count } = this.context.posts;
+    const { pageSize, currentPage,  searchQuery } = this.context;
+    console.log('searchQuery', searchQuery)   
+    if (count === 0) return <p>There are no movies in the database.</p>;
+
+    const { totalCount, data: posts, isloading } = this.getPagedData();
+
+        console.log('all data', posts)
+        // const{length:count} = this.context.posts;
+        // const {  isloading , pageSize, currentPage, searchQuery, posts:allPosts} = this.context;
+        // const posts = paginate(allPosts, currentPage, pageSize)
+        const requiredItem = this.state.requiredItem;
+        const modalData = posts[requiredItem];
+        //console.log('modalData', modalData)
+       if (!isloading) {
+            if(!posts.length && !searchQuery) return <div>
                 <p>No Data Found</p>
                 <div className="mt-3 text-right">
                             { <Link  to='/create-new-post' className="btn btn-md btn-primary mr-3">Create New Post</Link>}
@@ -78,8 +121,11 @@ class Dashboard extends Component {
 
                 </div>
                 <section className="d-main">
+                    <div className="mb-5">
+                        <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
+                    </div>     
                     <div className="d-inner">
-                        <p>Showing <strong>{count}</strong> records</p>
+                        <p>Showing <strong>{totalCount}</strong> records</p>
                         <table className="table table-bordered">
                             <thead>
                                 <tr>
@@ -99,7 +145,7 @@ class Dashboard extends Component {
                                             <td>
                                                 <button className="btn btn-primary btn-xs"
                                                     onClick={()=> {
-                                                        this.handleShow(post); 
+                                                        this.handleShow(index); 
                                                         this.replaceModalItem(index); 
                                                         
                                                     }}
@@ -110,7 +156,7 @@ class Dashboard extends Component {
                                             </td>
                                             <td>
                                                 
-                                                    <img src={post.img}/>
+                                                   {post.img ? <img src={post.img} />: 'no image'} 
                                                 
                                             </td>
                                         </tr>
@@ -118,8 +164,9 @@ class Dashboard extends Component {
                                 }
                             </tbody>
                         </table>
+                        
                         <Pagination 
-                            itemsCount={count}
+                            itemsCount={totalCount}
                             pageSize={pageSize}
                             currentPage={currentPage}
                             onPageChange={this.handlePageChange}    
@@ -133,10 +180,10 @@ class Dashboard extends Component {
                 <ModaEdit  
                         show={this.state.show}
                         close={this.handleModalClose} 
-                       // posts={this.state.posts}
-                        //title={modalData.title.rendered}
-                        //content={modalData.content.rendered}
-                        //id={modalData.id}
+                        // posts={this.state.posts}
+                        title={modalData && modalData.title && modalData.title.rendered}
+                        content={modalData && modalData.content && modalData.content.rendered}
+                        id={modalData && modalData.id}
                         saveModalDetails={this.saveModalDetails}         
                     />          
             </React.Fragment>

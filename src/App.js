@@ -11,6 +11,7 @@ import { ProjectsContext } from "./context/projectsContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NetworkDetector from "./networkDetector/networkDetector";
+import PrivateRoute from './component/navbar/privareroute';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Navbar/>
           <Switch>
               <Route path="/login" exact component={Login} />
-              <Route path="/dashboard"  component={Dashboard} />
+              {/* <Route path="/dashboard"  component={Dashboard} /> */}
+              <PrivateRoute path="/dashboard"  component={Dashboard} />
               {/* <Route path="/login-form"  component={LoginForm} /> */}
               <Route path="/create-post"  component={CreatePost} />
               <Route path="/create-new-post"  component={CreateNewPost} />
