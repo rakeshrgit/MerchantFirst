@@ -29,8 +29,11 @@ class Dashboard extends Component {
     
  
      componentDidMount() {
+        this.context.getAllCategories();
        this.context.getAllPosts();
+      
       }
+      
       handleDelete = async id => {
         await this.setState({ postid: id });  
          this.context.onDeletePost(this.state.postid);  
@@ -68,7 +71,8 @@ class Dashboard extends Component {
           pageSize,
           currentPage,
           searchQuery,
-          posts:allPosts
+          posts:allPosts,
+          categories
         } = this.context;
     
         let filtered = allPosts;
@@ -90,15 +94,19 @@ class Dashboard extends Component {
 
     render() { 
 
-
+        //const{categories} = this.context.categories;
+        
     const { length: count } = this.context.posts;
-    const { pageSize, currentPage,  searchQuery } = this.context;
-    console.log('searchQuery', searchQuery)   
+   
+    const { pageSize, currentPage,  searchQuery , categories} = this.context;
+    //console.log('searchQuery', searchQuery)   
+     
     if (count === 0) return <p>There are no movies in the database.</p>;
 
     const { totalCount, data: posts, isloading } = this.getPagedData();
 
-        console.log('all data', posts)
+       // console.log('all data', posts)
+        console.log('post categories', categories)  
         // const{length:count} = this.context.posts;
         // const {  isloading , pageSize, currentPage, searchQuery, posts:allPosts} = this.context;
         // const posts = paginate(allPosts, currentPage, pageSize)
@@ -125,6 +133,7 @@ class Dashboard extends Component {
                         <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
                     </div>     
                     <div className="d-inner">
+                        
                         <p>Showing <strong>{totalCount}</strong> records</p>
                         <table className="table table-bordered">
                             <thead>

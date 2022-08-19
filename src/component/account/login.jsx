@@ -142,7 +142,7 @@ class Login extends Component {
                   </div>
                   <div className="form-group">
                   <Button
-                      class="btn btn-success btn-md"
+                      className="btn btn-success btn-md"
                      // onClick={this.submitLogin}
                      disabled={this.disabledLogin()}
                       type="submit"

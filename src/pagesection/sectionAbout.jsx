@@ -21,9 +21,7 @@ class SectionAbout extends Component {
                                 <div className="col-md-7">
                                     <div className="help-text ">
                                         <h4>{content.about_heading}</h4>
-                                        <div>
-                                            {content.about_description}
-                                        </div>
+                                        <div dangerouslySetInnerHTML={{__html: content.about_description }}></div>
                                     </div>
                                 </div>       
                             </div>

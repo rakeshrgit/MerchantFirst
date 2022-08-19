@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import{
   
     getPosts,
+    getCategories,
     deletePost,
     updatePost,
     createPost,
@@ -19,6 +20,7 @@ export class ProjectsContext extends Component {
     state = { 
         posts:[],
         pages:[],
+        categories:[],
         isloading: false,
         pageSize: 4, // for pagination
         currentPage:1,
@@ -45,6 +47,24 @@ export class ProjectsContext extends Component {
           this.setState({ posts: [], isloading: true });
         }
       }; 
+
+      getAllCategories = async () => {
+        try {
+          await getCategories().then(response => {
+            if (response.status === 200) {
+              const categories = response.data;
+              this.setState({ categories, isloading: true });
+              console.log('page data category',categories);
+            }
+           
+          });
+          
+
+        } catch (err) {
+          this.setState({ categories: [], isloading: true });
+        }
+      }; 
+
 
       getAllPageData = async () => {
         try {
@@ -121,6 +141,7 @@ export class ProjectsContext extends Component {
                 value={{ 
                     ...this.state,
                     getAllPosts: this.getAllPosts,
+                    getAllCategories: this.getAllCategories,
                     getAllPageData: this.getAllPageData,
                     onDeletePost: this.onDeletePost,
                     handlePageChange:this.handlePageChange,

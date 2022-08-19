@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
 import Form  from '../common/form';
+import emailjs from '@emailjs/browser';
 class ContactUs extends Form {
     state = { 
         data:{
             name:"",
             email:"",
-            phone:""
+            phone:"",
+            
         },
         errors:{
 
@@ -18,13 +20,11 @@ class ContactUs extends Form {
         phone:Joi.string().required().label('Phone')
      }
      
-    dosubmit = () => {
-        console.log('Submitted');
-    }
+   
     render() { 
         return (
             <div className="container">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmitContact} autoComplete="off">
             {this.renderInput('name', 'Name', 'text')}
             {this.renderInput('email', 'Email', 'email')}
              {this.renderInput('phone', 'Phone', 'text')}

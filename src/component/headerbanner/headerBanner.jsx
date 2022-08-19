@@ -60,8 +60,6 @@ class HeaderBanner extends Component {
                 <div>
                     <ContactUs/>    
                 </div> 
-                  
-                             
             </React.Fragment>
          );
     }

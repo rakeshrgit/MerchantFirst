@@ -13,6 +13,12 @@ export function getPosts() {
     return apiService.get(projectsEndpoint);
 }
 
+export function getCategories() {
+  const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/categories";
+  return apiService.get(projectsEndpoint);
+}
+
+
 export async function  getPostWithImage(posts){
     return posts.map(async (post, index) => {
       if(post.featured_media != 0){
@@ -27,17 +33,7 @@ export async function  getPostWithImage(posts){
   )
 }
 
-  // export function deletePost(id) {
-  //   const authToken = localStorage.getItem( 'token' );
-  //   const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts/" + id;
-  //   //console.log('projectsEndpoint', projectsEndpoint)
-  //   return apiService.delete(projectsEndpoint,{
-  //     headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${ authToken }`
-  //     }
-  // });
-  // }
+
  
   export function deletePost(id) {
     const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts/" + id;
@@ -53,7 +49,7 @@ export async function  getPostWithImage(posts){
  export function createPost(data) {
     const authToken = localStorage.getItem( 'token' );
     const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts?_embed";
-    console.log('projectsEndpoint', projectsEndpoint)
+    //console.log('projectsEndpoint', projectsEndpoint)
     return apiService.post(projectsEndpoint,data,{
       headers: {
           'Content-Type': 'application/json',

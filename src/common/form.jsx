@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Input from './input'
 import Joi from 'joi-browser';
+import emailjs from '@emailjs/browser';
+import { toast } from "react-toastify";
 class Form extends Component {
     state = { 
         data: {},
-        errors:{}
-     } 
+        errors:{},
+        
+    } 
     validate = () =>{
         const options = { abortEarly:false}
         const { error } = Joi.validate(this.state.data, this.schema, options);
@@ -29,8 +32,24 @@ class Form extends Component {
         //console.log(errors);
         this.setState({ errors:errors || {} });
         if (errors) return;
+       
         this.dosubmit()
     };
+    handleSubmitContact = (e) =>{
+        e.preventDefault();
+        const errors = this.validate();
+        //console.log(errors);
+        this.setState({ errors:errors || {} });
+        if (errors) return;
+        emailjs.sendForm('service_6z8bvma', 'template_bye6mum', e.target, 'YZL5bj80Ao8OtHAXP')
+        .then((result) => {
+            toast.success("Message Sent");
+           
+        }, (error) => {
+            console.log(error.text);
+        });
+       this.setState({data:''})
+    }
     
     handleChange = ({currentTarget:input}) =>{
         const errors = {...this.state.errors};
