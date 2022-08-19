@@ -48,22 +48,7 @@ export class ProjectsContext extends Component {
         }
       }; 
 
-      getAllCategories = async () => {
-        try {
-          await getCategories().then(response => {
-            if (response.status === 200) {
-              const categories = response.data;
-              this.setState({ categories, isloading: true });
-              console.log('page data category',categories);
-            }
-           
-          });
-          
-
-        } catch (err) {
-          this.setState({ categories: [], isloading: true });
-        }
-      }; 
+     
 
 
       getAllPageData = async () => {
@@ -141,7 +126,6 @@ export class ProjectsContext extends Component {
                 value={{ 
                     ...this.state,
                     getAllPosts: this.getAllPosts,
-                    getAllCategories: this.getAllCategories,
                     getAllPageData: this.getAllPageData,
                     onDeletePost: this.onDeletePost,
                     handlePageChange:this.handlePageChange,

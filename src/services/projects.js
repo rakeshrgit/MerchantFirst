@@ -13,10 +13,7 @@ export function getPosts() {
     return apiService.get(projectsEndpoint);
 }
 
-export function getCategories() {
-  const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/categories";
-  return apiService.get(projectsEndpoint);
-}
+
 
 
 export async function  getPostWithImage(posts){

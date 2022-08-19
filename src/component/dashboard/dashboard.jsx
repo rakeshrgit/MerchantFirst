@@ -26,13 +26,9 @@ class Dashboard extends Component {
         
      }
      static contextType = ProjectsContext; 
-    
- 
-     componentDidMount() {
-        this.context.getAllCategories();
+    componentDidMount() {
        this.context.getAllPosts();
-      
-      }
+    }
       
       handleDelete = async id => {
         await this.setState({ postid: id });  
@@ -72,7 +68,6 @@ class Dashboard extends Component {
           currentPage,
           searchQuery,
           posts:allPosts,
-          categories
         } = this.context;
     
         let filtered = allPosts;
@@ -98,7 +93,7 @@ class Dashboard extends Component {
         
     const { length: count } = this.context.posts;
    
-    const { pageSize, currentPage,  searchQuery , categories} = this.context;
+    const { pageSize, currentPage,  searchQuery} = this.context;
     //console.log('searchQuery', searchQuery)   
      
     if (count === 0) return <p>There are no movies in the database.</p>;
@@ -106,8 +101,7 @@ class Dashboard extends Component {
     const { totalCount, data: posts, isloading } = this.getPagedData();
 
        // console.log('all data', posts)
-        console.log('post categories', categories)  
-        // const{length:count} = this.context.posts;
+       // const{length:count} = this.context.posts;
         // const {  isloading , pageSize, currentPage, searchQuery, posts:allPosts} = this.context;
         // const posts = paginate(allPosts, currentPage, pageSize)
         const requiredItem = this.state.requiredItem;
