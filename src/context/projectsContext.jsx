@@ -27,7 +27,7 @@ export class ProjectsContext extends Component {
         requiredItem: 0,
         searchQuery:""
      };
-
+  
      handlePageChange = page => {
       this.setState({ currentPage: page });   
     }; 
@@ -35,6 +35,10 @@ export class ProjectsContext extends Component {
     handleSearch = query => {
       this.setState({ searchQuery: query, currentPage: 1 });
     };
+
+    handleGenreSelect = (category) =>{
+      this.setState({ selectedCategory:category, currentPage: 1 })
+   }
 
      getAllPosts = async () => {
         try {
@@ -54,7 +58,7 @@ export class ProjectsContext extends Component {
             if (response.status === 200) {
               const categories = response.data;
               this.setState({ categories, isloading: true });
-              console.log('page data category',categories);
+              //console.log('page data category',categories);
             }
            
           });
@@ -148,7 +152,8 @@ export class ProjectsContext extends Component {
                     onUpdatePost:this.onUpdatePost,
                     addNewPost:this.addNewPost,
                     getPostWithImage: this.getPostWithImage ,
-                    handleSearch: this.handleSearch
+                    handleSearch: this.handleSearch,
+                    handleGenreSelect: this.handleGenreSelect
                 }}
                 
             >

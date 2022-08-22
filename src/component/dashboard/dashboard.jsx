@@ -12,6 +12,7 @@ import Pagination from '../common/pagination';
 import { paginate } from './../../utils/paginate';
 import SearchBox from './../../common/searchBox';
 import _ from "lodash";
+import Categories from './../categories/Categories';
 class Dashboard extends Component {
     state = { 
 
@@ -61,7 +62,8 @@ class Dashboard extends Component {
         this.context.handlePageChange(page);   
        
       };  
-       
+      
+      
       
     
 
@@ -71,8 +73,9 @@ class Dashboard extends Component {
           pageSize,
           currentPage,
           searchQuery,
-          posts:allPosts,
-          categories
+          selectedCategory,
+          posts:allPosts
+          
         } = this.context;
     
         let filtered = allPosts;
@@ -80,8 +83,8 @@ class Dashboard extends Component {
           filtered = allPosts.filter(m =>
             m.title.rendered.toLowerCase().startsWith(searchQuery.toLowerCase())
           );
-        // else if (selectedGenre && selectedGenre._id)
-        //   filtered = allMovies.filter(m => m.genre._id === selectedGenre._id);
+        // else if (selectedCategory && selectedCategory.id)
+        //   filtered = allPosts.filter(m => m.category.id === selectedCategory.id);
     
         const sorted = _.orderBy(filtered);
     
@@ -98,7 +101,7 @@ class Dashboard extends Component {
         
     const { length: count } = this.context.posts;
    
-    const { pageSize, currentPage,  searchQuery , categories} = this.context;
+    const { pageSize, currentPage,  searchQuery, categories} = this.context;
     //console.log('searchQuery', searchQuery)   
      
     if (count === 0) return <p>There are no movies in the database.</p>;
@@ -106,7 +109,7 @@ class Dashboard extends Component {
     const { totalCount, data: posts, isloading } = this.getPagedData();
 
        // console.log('all data', posts)
-        console.log('post categories', categories)  
+        
         // const{length:count} = this.context.posts;
         // const {  isloading , pageSize, currentPage, searchQuery, posts:allPosts} = this.context;
         // const posts = paginate(allPosts, currentPage, pageSize)
@@ -128,64 +131,76 @@ class Dashboard extends Component {
                 <div>
 
                 </div>
-                <section className="d-main">
-                    <div className="mb-5">
-                        <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
-                    </div>     
-                    <div className="d-inner">
-                        
-                        <p>Showing <strong>{totalCount}</strong> records</p>
-                        <table className="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Author</th>
-                                    <th>Image</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    posts.map((post, index) =>
-                                        <tr key={index}>
-                                            <td>{post.title.rendered}</td>
-                                            <td>{renderHTML(post.content.rendered)}</td>
-                                            {/* <td>{item._embedded.author[0].name}</td> */}
-                                            <td>
-                                                <button className="btn btn-primary btn-xs"
-                                                    onClick={()=> {
-                                                        this.handleShow(index); 
-                                                        this.replaceModalItem(index); 
-                                                        
-                                                    }}
-                                                    >
-                                                    <i className="fa fa-pencil"></i>
-                                                </button>
-                                                <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash"></i></button>
-                                            </td>
-                                            <td>
-                                                
-                                                   {post.img ? <img src={post.img} />: 'no image'} 
-                                                
-                                            </td>
-                                        </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
-                        
-                        <Pagination 
-                            itemsCount={totalCount}
-                            pageSize={pageSize}
-                            currentPage={currentPage}
-                            onPageChange={this.handlePageChange}    
-                        />
-                        <div className="mt-3 text-right">
-                            { <Link  to='/create-new-post' className="btn btn-md btn-primary mr-3">Create New Post</Link>}
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-3">
+                            <Categories
+                               categories={categories} 
+                               currentCategory={this.context.selectedCategory}
+                               onItemSelect={this.context.handleGenreSelect}
+                            />
                         </div>
-                    </div>
-            
-                </section>
+                        <div className="col-9">
+                            <section className="d-main">
+                                <div className="mb-5">
+                                    <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
+                                </div>     
+                                <div className="d-inner">
+                                    
+                                    <p>Showing <strong>{totalCount}</strong> records</p>
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Content</th>
+                                                <th>Author</th>
+                                                <th>Image</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                posts.map((post, index) =>
+                                                    <tr key={index}>
+                                                        <td>{post.title.rendered}</td>
+                                                        <td>{renderHTML(post.content.rendered)}</td>
+                                                        {/* <td>{item._embedded.author[0].name}</td> */}
+                                                        <td>
+                                                            <button className="btn btn-primary btn-xs"
+                                                                onClick={()=> {
+                                                                    this.handleShow(index); 
+                                                                    this.replaceModalItem(index); 
+                                                                    
+                                                                }}
+                                                                >
+                                                                <i className="fa fa-pencil"></i>
+                                                            </button>
+                                                            <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash"></i></button>
+                                                        </td>
+                                                        <td>
+                                                            
+                                                            {post.img ? <img src={post.img} />: 'no image'} 
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
+                                    
+                                    <Pagination 
+                                        itemsCount={totalCount}
+                                        pageSize={pageSize}
+                                        currentPage={currentPage}
+                                        onPageChange={this.handlePageChange}    
+                                    />
+                                    <div className="mt-3 text-right">
+                                        { <Link  to='/create-new-post' className="btn btn-md btn-primary mr-3">Create New Post</Link>}
+                                    </div>
+                                </div>
+                            </section>
+                        </div> 
+                    </div>  
+                </div>                                
                 <ModaEdit  
                         show={this.state.show}
                         close={this.handleModalClose} 
