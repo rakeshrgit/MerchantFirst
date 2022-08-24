@@ -27,6 +27,7 @@ auth = localStorage.getItem("token");
 					<div className="navbarinner">
 						<ul>
 							<li><Link to='/'>Home</Link></li>
+							<li><Link to='/signup'>Signup</Link></li>
 							
 							{ isLoggedIn() ? (
 							<React.Fragment>

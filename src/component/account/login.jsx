@@ -8,6 +8,7 @@ import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import Loader from "../../images/loader.gif";
 import createMarkup from 'create-markup';
+import jwt from "jsonwebtoken"
 class Login extends Component {
   state = {
     account:{ 
@@ -37,6 +38,8 @@ class Login extends Component {
           //console.log()
           return;
           }
+          //const user = jwt.verify(res.data.token);
+         // console.log("varify token user", user) 
           localStorage.setItem('token', res.data.token);
 				  localStorage.setItem('userName', res.data.user_nicename);
           this.setState({

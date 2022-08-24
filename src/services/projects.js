@@ -47,7 +47,9 @@ export async function  getPostWithImage(posts){
   }
 
  export function createPost(data) {
+    //console.log('data', data)
     const authToken = localStorage.getItem( 'token' );
+    //console.log('authToken', authToken)
     const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts?_embed";
     //console.log('projectsEndpoint', projectsEndpoint)
     return apiService.post(projectsEndpoint,data,{
