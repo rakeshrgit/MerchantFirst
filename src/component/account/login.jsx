@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 //import "./account.scss";
-import { Link } from "react-router-dom";
-import { Button, Form, Alert } from "react-bootstrap";
+
+import { Button, Alert } from "react-bootstrap";
 //import lopginBg from "./images/lopginBg.jpg";
-import { login } from "../../services/authService";
+
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import Loader from "../../images/loader.gif";
-import createMarkup from 'create-markup';
+
+
 class Login extends Component {
   state = {
     account:{ 
@@ -24,7 +25,7 @@ class Login extends Component {
 
   onFormSubmit = async e =>{
     e.preventDefault();
-    const siteURL = 'http://www.w3standards.in/'
+    const siteURL = 'https://www.w3standards.in/'
     const loginData ={
       username:this.state.account.username,
       password:this.state.account.password
@@ -37,6 +38,8 @@ class Login extends Component {
           //console.log()
           return;
           }
+          //const user = jwt.verify(res.data.token);
+         // console.log("varify token user", user) 
           localStorage.setItem('token', res.data.token);
 				  localStorage.setItem('userName', res.data.user_nicename);
           this.setState({

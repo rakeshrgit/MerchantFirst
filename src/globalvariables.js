@@ -1,5 +1,5 @@
 var localGlobalConstants = {
-    BASE_URL: "http://www.w3standards.in/"
+    BASE_URL: "https://www.w3standards.in/"
   };
   var config = localGlobalConstants;
 

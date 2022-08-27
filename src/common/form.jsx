@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Input from './input'
+import Input from './input';
+import Select from "./select";
 import Joi from 'joi-browser';
 import emailjs from '@emailjs/browser';
 import { toast } from "react-toastify";
@@ -51,6 +52,14 @@ class Form extends Component {
        this.setState({data:''})
     }
     
+    handleRegisterSubmit = (e) =>{
+        e.preventDefault();
+        const errors = this.validate();
+        //console.log(errors);
+        this.setState({ errors:errors || {} });
+        this.dosSbmit()
+    }
+
     handleChange = ({currentTarget:input}) =>{
         const errors = {...this.state.errors};
         const errorMessage = this.validateProperty(input);
@@ -69,6 +78,20 @@ class Form extends Component {
             className="btn btn-primary">{label}</button>
         )
     }
+    renderSelect(name, label, options) {
+        const { data, errors } = this.state;
+    
+        return (
+          <Select
+            name={name}
+            value={data[name]}
+            label={label}
+            options={options}
+            onChange={this.handleChange}
+            error={errors[name]}
+          />
+        );
+      }
     renderInput(name, label, type = 'text'){
         const {data, errors} = this.state;
         return(

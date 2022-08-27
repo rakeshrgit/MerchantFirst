@@ -137,7 +137,17 @@ export class ProjectsContext extends Component {
               toast.error("post Not Added!");
             }
           });
-        } catch (err) {}
+        } catch (err) {
+          //console.log('add new post error', err.response);
+          const {status} = err.response || {} ;
+          if(status == 403){
+            toast.error("you are not allowed to add post");
+          }else if(status >= 500){
+            toast.error("Internal Server Error");
+          }else{
+            toast.error("Something went error");
+          }
+        }
       };  
     render() { 
       
