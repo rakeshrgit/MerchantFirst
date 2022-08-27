@@ -93,7 +93,7 @@ export class ProjectsContext extends Component {
       onDeletePost = async (id) => {
         //console.log('onDeletePost', id)
         const posts = this.state.posts;
-
+          
           try {
             await deletePost(id).then(response => {
               if (response.status) {
