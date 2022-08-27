@@ -1,7 +1,7 @@
 import axios from 'axios';
 export const getAdminToken = async () => {
     let config = {
-        url : "http://www.w3standards.in/wp-json/jwt-auth/v1/token",
+        url : "https://www.w3standards.in/wp-json/jwt-auth/v1/token",
         method:"post",
         headers : {},
         data:{

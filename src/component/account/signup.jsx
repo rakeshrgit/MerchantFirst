@@ -42,7 +42,7 @@ class Signup extends Form {
           console.log("signUp Data: ", response.data);
           if (response.data) {
             //const responseData = response.data;
-            window.location.href = "/success";
+            //window.location.href = "/success";
           
           }
           if (!response.data.status) {
