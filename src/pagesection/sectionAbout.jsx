@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import renderHTML from 'react-render-html';
-import AboutDescprition from './aboutDescprition'
-import { Link } from 'react-router-dom';
 class SectionAbout extends Component {
     state = {  }
     render() { 
         const{contentabout} = this.props;
-        //console.log('dadaAbout', acf);
+        //console.log('dadaAbout', contentabout);
         return ( 
             <React.Fragment>
                 <div className="container">
                     {
-                        contentabout.map(content=>(
-                            <div  className="row">
+                        contentabout.map((content, index)=>(
+                            <div  className="row" key={index}>
                                 <div className="col-md-5">
                                     <div className="img-about">
                                             <img src={content.about_image}/>

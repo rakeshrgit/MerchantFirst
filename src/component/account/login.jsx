@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 //import "./account.scss";
-import { Link } from "react-router-dom";
-import { Button, Form, Alert } from "react-bootstrap";
+
+import { Button, Alert } from "react-bootstrap";
 //import lopginBg from "./images/lopginBg.jpg";
-import { login } from "../../services/authService";
+
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import Loader from "../../images/loader.gif";
-import createMarkup from 'create-markup';
-import jwt from "jsonwebtoken"
+
+
 class Login extends Component {
   state = {
     account:{ 

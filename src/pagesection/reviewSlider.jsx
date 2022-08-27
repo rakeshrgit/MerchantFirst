@@ -15,8 +15,8 @@ class ReviewSlider extends Component {
             <React.Fragment>
                 <Slider {...settings}>
                     {
-                      review.map(item=>(
-                        <div className="text-slide-info text-center">
+                      review.map((item, index)=>(
+                        <div className="text-slide-info text-center" key={index}>
                             <img src={item.image}/>
                             <p>{item.slider_description}</p>
                             <h6>{item.review_name}</h6>

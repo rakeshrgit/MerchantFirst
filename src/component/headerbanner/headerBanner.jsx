@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './css/custom.css';
-import http from '../../services/httpServices';
-import config from '../../config.json';
 import { Link } from 'react-router-dom';
-import renderHTML from 'react-render-html';
+
 import SectionAbout from '../../pagesection/sectionAbout';
 import AdvantageBlock from './../../pagesection/sectionAdvantage';
 import "slick-carousel/slick/slick.css";

@@ -10,7 +10,7 @@ class Categories extends Component {
             valueProperty,
             textProperty 
         } = this.props;
-        console.log('post categories', currentCategory)  
+        //console.log('post categories', currentCategory)  
         return (
             <div>
                 <ul className="list-group">

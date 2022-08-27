@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import http from '../../services/httpServices';
 import config from '../../config.json';
 import Loader from "../../images/loader.gif";
 class CreatePost extends Component {
