@@ -10,11 +10,7 @@ class CreateNewPost extends Component {
         message: '',
      }
      static contextType = ProjectsContext;
-    //  componentWillMount() {
-    //     const newPost = { ...this.state.newPost };
-    //     this.setState({ newPost });
-        
-    //   }
+    
     disabledAddPost() {
         const infodisable = { ...this.state };
         if (infodisable.title === "" || infodisable.content === "") {

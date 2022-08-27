@@ -21,6 +21,7 @@ class Dashboard extends Component {
         loading: false,
         error: null,
         show:false,
+        categories:[]
         //pageSize: 4, // for pagination
         //currentPage:1
         
@@ -31,8 +32,8 @@ class Dashboard extends Component {
  
      componentDidMount() {
         this.context.getAllCategories();
-       this.context.getAllPosts();
-      
+        this.context.getAllPosts();
+        
       }
       
       handleDelete = async id => {
@@ -83,9 +84,11 @@ class Dashboard extends Component {
           filtered = allPosts.filter(m =>
             m.title.rendered.toLowerCase().startsWith(searchQuery.toLowerCase())
           );
-        // else if (selectedCategory && selectedCategory.id)
-        //   filtered = allPosts.filter(m => m.category.id === selectedCategory.id);
-    
+        else if (selectedCategory && selectedCategory.id)
+          filtered = allPosts.filter(m => m.categories.includes(selectedCategory.id) );
+        else{
+           
+        }    
         const sorted = _.orderBy(filtered);
     
         const posts = paginate(sorted, currentPage, pageSize);
