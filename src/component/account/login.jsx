@@ -25,7 +25,7 @@ class Login extends Component {
 
   onFormSubmit = async e =>{
     e.preventDefault();
-    const siteURL = 'http://www.w3standards.in/'
+    const siteURL = 'https://www.w3standards.in/'
     const loginData ={
       username:this.state.account.username,
       password:this.state.account.password
