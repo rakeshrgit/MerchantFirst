@@ -56,8 +56,10 @@ export class ProjectsContext extends Component {
         try {
           await getCategories().then(response => {
             if (response.status === 200) {
-              const categories = response.data;
+              const categories = [{ id: "", name: "All Posts" }, ...response.data];
+             
               this.setState({ categories, isloading: true });
+              
               //console.log('page data category',categories);
             }
            
