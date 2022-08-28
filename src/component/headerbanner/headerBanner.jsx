@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './css/custom.css';
 import { Link } from 'react-router-dom';
-
 import SectionAbout from '../../pagesection/sectionAbout';
 import AdvantageBlock from './../../pagesection/sectionAdvantage';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProjectsContext from '../../context/projectsContext';
-import Slider from "react-slick";
 import ReviewSlider from './../../pagesection/reviewSlider';
 import ContactUs from './../../formcontact/contactus';
 class HeaderBanner extends Component {
