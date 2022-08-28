@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {Modal, Button, Row, Col, Form} from "react-bootstrap";
-import renderHTML from 'react-render-html';
-import RichTextEditor from './../../richtexteditor/richTextEditor';
+import {Modal, Button, } from "react-bootstrap";
 import JoditEditor from "jodit-react";
 //import './scss/edit.scss'
 

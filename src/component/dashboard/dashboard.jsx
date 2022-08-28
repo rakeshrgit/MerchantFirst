@@ -70,7 +70,6 @@ class Dashboard extends Component {
 
       getPagedData = () => {
         const {
-          isloading,  
           pageSize,
           currentPage,
           searchQuery,
@@ -181,7 +180,7 @@ class Dashboard extends Component {
                                                         </td>
                                                         <td>
                                                             
-                                                            {post.img ? <img src={post.img} />: 'no image'} 
+                                                            {post.img ? <img src={post.img} alt="Post" />: 'no image'} 
                                                             
                                                         </td>
                                                     </tr>

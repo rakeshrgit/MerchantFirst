@@ -40,10 +40,10 @@ class CreatePost extends Component {
 					
 				} )
 			} )
-			.catch( err => {{
+			.catch( err => {
 
 				this.setState( { loading: false, message: err.response.data.message } )
-			}} )
+			} )
 			
 		};
     handleInputChange = ( event ) => {

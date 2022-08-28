@@ -12,7 +12,7 @@ class SectionAbout extends Component {
                             <div  className="row" key={index}>
                                 <div className="col-md-5">
                                     <div className="img-about">
-                                            <img src={content.about_image}/>
+                                            <img src={content.about_image} alt="Merchant"/>
                                     </div>
                                 </div>
                                 <div className="col-md-7">

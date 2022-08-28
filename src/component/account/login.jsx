@@ -109,8 +109,8 @@ class Login extends Component {
   render() {
    
     const {account} = this.state;
-    const { errors, loggedIn, userNiceName, loading } = this.state
-    const user = userNiceName ? userNiceName : localStorage.getItem('userName')
+    const { errors, loggedIn, loading } = this.state
+    //const user = userNiceName ? userNiceName : localStorage.getItem('userName')
     if ( loggedIn || localStorage.getItem( 'token' ) ) {
 			return <Redirect to={`/dashboard`} noThrow/>
         }

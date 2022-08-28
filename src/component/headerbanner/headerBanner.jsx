@@ -36,7 +36,7 @@ class HeaderBanner extends Component {
                                     </div>
                                 </div>
                                 <div className="banner-head">
-                                    <img src={item.acf.banner_image}/>
+                                    <img src={item.acf.banner_image} alt="Merchant"/>
                                 </div>
                             </div>
                         </div>

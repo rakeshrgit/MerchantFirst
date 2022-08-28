@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import HeaderBanner from './component/headerbanner/headerBanner';
 import Navbar from './component/navbar/navbar';
 import Login from './component/account/login';

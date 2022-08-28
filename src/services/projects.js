@@ -21,7 +21,7 @@ export function getCategories() {
 
 export async function  getPostWithImage(posts){
     return posts.map(async (post, index) => {
-      if(post.featured_media != 0){
+      if(post.featured_media !== 0){
       const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/media/" + post.featured_media;
      let {data} = await apiService.get(projectsEndpoint);
      //console.log("d",data)
