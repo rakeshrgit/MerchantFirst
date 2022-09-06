@@ -33,11 +33,18 @@ export async function  getPostWithImage(posts){
   )
 }
 
-
- 
   export function deletePost(id) {
+    const authToken = localStorage.getItem( 'token' );
     const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts/" + id;
-    return apiService.delete(projectsEndpoint);
+    //return apiService.delete(projectsEndpoint);
+    return apiService.delete(projectsEndpoint,id,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ authToken }`
+          
+        }
+      
+    });
   }
 
 
