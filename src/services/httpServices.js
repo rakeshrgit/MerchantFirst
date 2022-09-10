@@ -1,8 +1,8 @@
 import axios from "axios";
 const authToken = localStorage.getItem( 'token' );
-//console.log('authToken', authToken)
+//console.log('authTokenwww', authToken)
 if(authToken) {
-  axios.defaults.headers['Authorization'] ='Bearer ' + authToken;
+  axios.defaults.headers.common['Authorization'] ='Bearer' + authToken;
 }
 
 axios.interceptors.response.use(null, error => {

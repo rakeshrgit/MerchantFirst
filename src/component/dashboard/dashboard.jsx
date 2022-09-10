@@ -49,7 +49,7 @@ class Dashboard extends Component {
     }
      handleShow = (index) =>{
        this.setState({show:true, index})
-       console.log('post', index) 
+       //console.log('post', index) 
      }
      handleModalClose = () =>{
         this.setState({show:false})
