@@ -315,10 +315,16 @@ justify-content: flex-start;
 }
 .message-info > ul > li > i{ font-size:72px; margin-right:10px;}
 .footer-main{padding:0px 0px 0px 0px;}
-
 .copyright{background:#333333; padding:30px 0px 30px 0px; margin:0px 0px 0px 0px; color:#ffffff;}
-
-
-
 .header-fixed .top-scroll{opacity:1;}
+/* new design start */
+.loader{position:fixed; left:50%; top:50%; margin-top:-30px;;}
+.h-logo{width:100%; max-width:260px;}
+.navbarinner{padding: 25px 22px; background: #fff;}
 
+
+
+
+
+
+/* new design end */

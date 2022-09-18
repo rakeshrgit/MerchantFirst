@@ -9,6 +9,7 @@ import ProjectsContext from '../../context/projectsContext';
 import ReviewSlider from './../../pagesection/reviewSlider';
 import ContactUs from './../../formcontact/contactus';
 import Loader from "../../images/loader.gif";
+
 class HeaderBanner extends Component {
     state = { 
         pages:[]

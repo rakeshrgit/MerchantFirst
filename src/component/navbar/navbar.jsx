@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
+import Logo from "../../images/logo.png";
 import { isLoggedIn, getUserName } from '../function/function'
 //import './scss/navbar.scss'
 class Navbar extends Component {
@@ -25,27 +25,32 @@ auth = localStorage.getItem("token");
 			<React.Fragment>
 				<section className="navbarmain">	
 					<div className="navbarinner">
-						<ul>
-							<li><Link to='/'>Home</Link></li>
-							<li><Link to='/signup'>Signup</Link></li>
+						<div className="d-flex w-100 align-items-center justify-content-between">
+							<span className="h-logo">	
+								<img src={Logo} alt=""/>	
+							</span>
+							<ul className="d-flex list-unstyled mb-0">
+								<li><Link to='/'>Home</Link></li>
+								<li><Link to='/signup'>Signup</Link></li>
+								
+								{ isLoggedIn() ? (
+								<React.Fragment>
+									<li className="nav-item">
+										<NavLink to='/dashboard'>Dashboard</NavLink>
+									</li>
+									<li className="nav-item">
+										<button onClick={() => this.handleLogout() } className="btn btn-secondary ml-3">Logout</button>
+									</li>
+									<li>{ userName ? <h2>Welcome { userName }!!</h2>: '' }</li>
+								</React.Fragment>
+							) : (
+								<li className="nav-item">
+									<NavLink to="/login">Login</NavLink>
+								</li>
+							) }
 							
-							{ isLoggedIn() ? (
-							<React.Fragment>
-								<li className="nav-item">
-									<NavLink to='/dashboard'>Dashboard</NavLink>
-								</li>
-								<li className="nav-item">
-									<button onClick={() => this.handleLogout() } className="btn btn-secondary ml-3">Logout</button>
-								</li>
-								<li>{ userName ? <h2>Welcome { userName }!!</h2>: '' }</li>
-							</React.Fragment>
-						) : (
-							<li className="nav-item">
-								<NavLink to="/login">Login</NavLink>
-							</li>
-						) }
-						
-						</ul>
+							</ul>
+						</div>		
 					</div>
 					{ window.location.pathname.includes( 'dashboard' ) ? (
 					<div><button id="b-toggle" className={classes}  /*className={this.state.isSwitchOn ? 's-on':'s-of'}*/ onClick={()=>this.handleTogle()}><i className="fa fa-bars"></i></button></div>
