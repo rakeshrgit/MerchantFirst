@@ -5,9 +5,9 @@ import JoditEditor from "jodit-react";
 
 class ModaEdit extends Component {
     state = { 
-        id:'',
-        title: '',
-        content:''
+       // id:'',
+       // title: '',
+        //content:''
      }
     
      componentWillReceiveProps(nextProps) {
@@ -16,6 +16,7 @@ class ModaEdit extends Component {
             content:nextProps.content,
             id:nextProps.id
         });
+       // console.log('nextProps', nextProps)
     }
     titleHandler(e) {
         this.setState({ title: e.target.value,  });
@@ -26,7 +27,7 @@ class ModaEdit extends Component {
     handleSave = () => {
         const item = this.state;
         this.props.saveModalDetails(item)
-        //console.log('item Name', item)
+       // console.log('item Name', item)
     }
     render() { 
        

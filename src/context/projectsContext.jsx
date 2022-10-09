@@ -107,7 +107,7 @@ export class ProjectsContext extends Component {
           } catch (err) {}
       };
       onUpdatePost = async (item) => {
-       // console.log('onUpdatePost', id)
+       console.log('item', item)
       //  const posts = this.state.posts;
          // console.log('item', item)
          this.setState({isloading: true }); 

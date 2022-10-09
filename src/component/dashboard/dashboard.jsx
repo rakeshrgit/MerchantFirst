@@ -55,7 +55,7 @@ class Dashboard extends Component {
         this.setState({show:false})
      }
   saveModalDetails =  async item => {
-     
+    console.log('item333', item)
         this.setState({show:false})
         await this.context.onUpdatePost(item);  
       }
@@ -117,6 +117,7 @@ class Dashboard extends Component {
         // const posts = paginate(allPosts, currentPage, pageSize)
         const requiredItem = this.state.requiredItem;
         const modalData = posts[requiredItem];
+        console.log('modalData', modalData)
         //console.log('modalData', modalData)
        if (!isloading) {
             if(!posts.length && !searchQuery) return <div>
