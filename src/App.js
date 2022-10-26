@@ -13,6 +13,7 @@ import NetworkDetector from "./networkDetector/networkDetector";
 import PrivateRoute from './component/navbar/privareroute';
 import Signup from './component/account/signup';
 import AccountInfo from './component/common/accountInfo';
+import Footer from './pages/footer';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           </Switch>
           <ToastContainer />
           </ProjectsContext>  
+          <footer>
+              <Footer/>
+          </footer>
     </React.Fragment>
   );
 }

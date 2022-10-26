@@ -117,44 +117,47 @@ class Login extends Component {
     else{
       return (
         <main className="main">
-          <div className="container">
-            {errors && <Alert variant={"danger"}>{errors}</Alert>}
-            
-              <form onSubmit={this.onFormSubmit}>
-                  <div className="form-group">
-                     <label>Username</label>
-                     <input 
-                      type="text" 
-                      className="form-control"
-                      name='username'
-                      value={account.username}
-                      onChange={this.handleOnChange}
-                      required
-                      /> 
-                  </div>
-                  <div className="form-group">
-                     <label>Password</label>
-                     <input 
-                      type="password" 
-                      className="form-control"
-                      name='password'
-                      value={account.password}
-                      onChange={this.handleOnChange}
-                      required
-                      /> 
-                  </div>
-                  <div className="form-group">
-                  <Button
-                      className="btn btn-success btn-md"
-                     // onClick={this.submitLogin}
-                     disabled={this.disabledLogin()}
-                      type="submit"
-                    >
-                      Login
-                    </Button>
-                  </div>
-                  { loading && <img className="loader" src={Loader} alt="Loader"/> }
-              </form> 
+          <div className="f-account">   
+            <div className="container">
+              <div className="f-account-inner">
+                {errors && <Alert variant={"danger"}>{errors}</Alert>}
+                  <form onSubmit={this.onFormSubmit}>
+                      <div className="form-group">
+                        <label>Username</label>
+                        <input 
+                          type="text" 
+                          className="form-control"
+                          name='username'
+                          value={account.username}
+                          onChange={this.handleOnChange}
+                          required
+                          /> 
+                      </div>
+                      <div className="form-group">
+                        <label>Password</label>
+                        <input 
+                          type="password" 
+                          className="form-control"
+                          name='password'
+                          value={account.password}
+                          onChange={this.handleOnChange}
+                          required
+                          /> 
+                      </div>
+                      <div className="form-group">
+                      <Button
+                          className="btn btn-success btn-lg"
+                        // onClick={this.submitLogin}
+                        disabled={this.disabledLogin()}
+                          type="submit"
+                        >
+                          Login
+                        </Button>
+                      </div>
+                      { loading && <img className="loader" src={Loader} alt="Loader"/> }
+                  </form> 
+                </div>
+            </div>
           </div>
         </main>
       );

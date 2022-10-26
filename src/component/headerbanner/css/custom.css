@@ -81,9 +81,10 @@ height:100vh;
     background: #fff;
     width: 168px;
     font-size: 20px;
-    height: 52px;
-    line-height: 57px;
-	border-radius: 6px;
+    line-height:1;
+    padding:15px 0px;
+	-webkit-border-radius:0px;
+    border-radius:0px;
 	text-decoration:none;
 }
 
@@ -320,11 +321,35 @@ justify-content: flex-start;
 /* new design start */
 .loader{position:fixed; left:50%; top:50%; margin-top:-30px;;}
 .h-logo{width:100%; max-width:260px;}
-.navbarinner{padding: 25px 22px; background: #fff;}
-
-
-
-
-
-
+.navbarinner{padding: 25px 22px; background: #fff; -webkit-box-shadow:0px 0px 9px #7a7a7a; box-shadow:0px 0px 9px #7a7a7a;}
+.nav-main > li{margin:0px 15px 0px 0px; font-size:1.1rem;}
+.nav-main > li:last-child{margin-right:0;}
+.nav-main > li a{color:#000; text-decoration:none;}
 /* new design end */
+/* home contact start */
+.f-contact{padding:60px 0px 60px 0px;}
+.f-contact label{font-size:1.1rem; font-weight:600;}
+.f-contact .form-control{-webkit-border-radius:0; border-radius:0; border:1px solid #b7b7b7; height:auto; padding:8px;}
+.f-contact .btn-primary{-webkit-border-radius:0; border-radius:0;}
+/* home contact end */
+/* footer start */
+.footer-bg{
+    background:#1e1e1e;
+    padding:40px 0px;
+}
+.f-nav > ul > li{
+    margin:0px 15px 0px 0px;
+    font-size:1.1rem;
+}
+.f-nav > ul > li a{
+    color:#fff;
+    text-decoration:none;
+}
+.footer-copyright{
+    background:#333;
+    padding:26px 0px 18px 0px;
+}
+.copyright-text{color:#fff; font-size:1.1rem;}
+
+/* footer end */
+

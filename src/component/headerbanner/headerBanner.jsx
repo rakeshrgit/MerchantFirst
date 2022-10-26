@@ -9,6 +9,7 @@ import ProjectsContext from '../../context/projectsContext';
 import ReviewSlider from './../../pagesection/reviewSlider';
 import ContactUs from './../../formcontact/contactus';
 import Loader from "../../images/loader.gif";
+import Footer from './../../pages/footer';
 
 class HeaderBanner extends Component {
     state = { 
@@ -57,7 +58,7 @@ class HeaderBanner extends Component {
                             </div>
                         </div>    
                     )}           
-                    <div>
+                    <div className="f-contact">
                         <ContactUs/>    
                     </div> 
                 </React.Fragment>

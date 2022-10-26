@@ -75,7 +75,7 @@ class Form extends Component {
             <button 
             disabled = {this.validate()}    
             type="submit" 
-            className="btn btn-primary">{label}</button>
+            className="btn btn-primary btn-lg">{label}</button>
         )
     }
     renderSelect(name, label, options) {

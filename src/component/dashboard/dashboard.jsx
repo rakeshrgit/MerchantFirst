@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import Sibebar from '../sidebar/sidebar';
-//import http from '../../services/httpServices';
-//import config from '../../config.json';
 import ModaEdit from '../Modal/editmodal/moaledit'
 import ProjectsContext from '../../context/projectsContext';
-//import axios from 'axios'
 import { Link } from 'react-router-dom';
 import renderHTML from 'react-render-html';
 //import './scss/dashboard.scss';
@@ -15,22 +11,15 @@ import _ from "lodash";
 import Categories from './../categories/Categories';
 class Dashboard extends Component {
     state = { 
-
         requiredItem: 0,
         postid: null,
         loading: false,
         error: null,
         show:false,
         categories:[]
-        //pageSize: 4, // for pagination
-        //currentPage:1
-        
-        
-     }
+    }
      static contextType = ProjectsContext; 
-    
- 
-     componentDidMount() {
+    componentDidMount() {
         this.context.getAllCategories();
         this.context.getAllPosts();
         
@@ -64,10 +53,6 @@ class Dashboard extends Component {
        
       };  
       
-      
-      
-    
-
       getPagedData = () => {
         const {
           pageSize,
@@ -129,11 +114,6 @@ class Dashboard extends Component {
         return ( 
           
             <React.Fragment>
-                
-                <Sibebar/>
-                <div>
-
-                </div>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-3">
@@ -149,7 +129,6 @@ class Dashboard extends Component {
                                     <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
                                 </div>     
                                 <div className="d-inner">
-                                    
                                     <p>Showing <strong>{totalCount}</strong> records</p>
                                     <table className="table table-bordered">
                                         <thead>

@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './../../common/form';
 import { signUp } from "../../services/authService";
 import Joi from 'joi-browser';
+import './account.css';
 class Signup extends Form {
     state = { 
         data: {
@@ -55,16 +56,19 @@ class Signup extends Form {
     
     render() { 
         return (
-            <div>
+            <div className="f-account"> 
                 <div className="container">
-                    <form onSubmit={this.handleRegisterSubmit} autoComplete="off">
-                    {this.renderInput('username', 'Username', 'text')}
-                    {this.renderInput('password', 'Password', 'password')}
-                    {this.renderInput('name', 'Name')}
-                    {this.renderInput('email', 'Email', 'email')}
-                    {this.renderSelect('roles', 'Roles', this.state.roles)}
-                    {this.renderButton('Login')}    
-                    </form>
+                    <div className="f-account-inner">
+                        <h3>Sign Up</h3>    
+                        <form onSubmit={this.handleRegisterSubmit} autoComplete="off">
+                        {this.renderInput('username', 'Username', 'text')}
+                        {this.renderInput('password', 'Password', 'password')}
+                        {this.renderInput('name', 'Name')}
+                        {this.renderInput('email', 'Email', 'email')}
+                        {this.renderSelect('roles', 'Roles', this.state.roles)}
+                        {this.renderButton('Login')}    
+                        </form>
+                    </div>
                 </div>    
             </div>
         );

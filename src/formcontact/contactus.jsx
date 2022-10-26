@@ -19,8 +19,6 @@ class ContactUs extends Form {
         email:Joi.string().required().label('Email'),
         phone:Joi.string().required().label('Phone')
      }
-     
-   
     render() { 
         return (
             <div className="container">
