@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import './css/custom.css';
 import { Link } from 'react-router-dom';
 import SectionAbout from '../../pagesection/sectionAbout';
@@ -15,6 +15,10 @@ class HeaderBanner extends Component {
     state = { 
         pages:[]
      };
+     constructor(props) {
+        super(props);
+        this.scrollDiv = createRef();
+      }
      static contextType = ProjectsContext; 
     //  async componentDidMount() {
     //     const { data: pages } = await http.get(config.apiEndpoint + 'wp-json/wp/v2/book')
@@ -23,7 +27,11 @@ class HeaderBanner extends Component {
     //  }
     componentDidMount() {
        this.context.getAllPageData();
-      }
+    }
+    handleScroll = () =>{
+        this.scrollDiv.current.scrollIntoView({inline: 'center', behavior: 'smooth' });
+    }
+    
     render() { 
         const {pages, loading} = this.context;  
         //console.log('pages', pages)
@@ -37,7 +45,8 @@ class HeaderBanner extends Component {
                                     <div className="container">
                                         <div className="content-banner">
                                             <h2>{item.acf.banner_text}</h2>    
-                                            <div className="contact"><Link to="/">{item.acf.banner_link}</Link></div>  
+                                            <div className="contact"><a 
+                                                onClick={this.handleScroll}>{item.acf.banner_link}</a></div>  
                                         </div>
                                     </div>
                                     <div className="banner-head">
@@ -58,7 +67,7 @@ class HeaderBanner extends Component {
                             </div>
                         </div>    
                     )}           
-                    <div className="f-contact">
+                    <div className="f-contact" ref={this.scrollDiv}>
                         <ContactUs/>    
                     </div> 
                 </React.Fragment>
