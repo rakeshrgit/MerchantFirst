@@ -13,8 +13,7 @@ class Categories extends Component {
 
         //console.log('post categories', currentCategory)  
         return (
-            <div>
-               
+            <div className="left-nav-pro">
                 <ul className="list-group">
                     {categories.map(category=>(
                         <li 

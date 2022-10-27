@@ -6,6 +6,8 @@ import './account.css';
 class Signup extends Form {
     state = { 
         data: {
+            first_name:"",
+            last_name:"",
             username:"",
             password:"",
             name:"",
@@ -27,6 +29,8 @@ class Signup extends Form {
         ]
      } 
      schema = {
+        first_name:Joi.string().required().label('First Name'),
+        last_name:Joi.string().required().label('Last Name'),
         username:Joi.string().required().label('Username'),
         password:Joi.string().required().label('Password'),
         name:Joi.string().required().label('Name'),
@@ -61,6 +65,8 @@ class Signup extends Form {
                     <div className="f-account-inner">
                         <h3>Sign Up</h3>    
                         <form onSubmit={this.handleRegisterSubmit} autoComplete="off">
+                        {this.renderInput('first_name', 'First Name', 'text')} 
+                        {this.renderInput('last_name', 'Last Name', 'text')}      
                         {this.renderInput('username', 'Username', 'text')}
                         {this.renderInput('password', 'Password', 'password')}
                         {this.renderInput('name', 'Name')}

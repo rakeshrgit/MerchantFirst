@@ -3,7 +3,7 @@ import ModaEdit from '../Modal/editmodal/moaledit'
 import ProjectsContext from '../../context/projectsContext';
 import { Link } from 'react-router-dom';
 import renderHTML from 'react-render-html';
-//import './scss/dashboard.scss';
+import './scss/dashboard.css';
 import Pagination from '../common/pagination';
 import { paginate } from './../../utils/paginate';
 import SearchBox from './../../common/searchBox';
@@ -112,86 +112,89 @@ class Dashboard extends Component {
                         </div>
             </div>;  
         return ( 
-          
             <React.Fragment>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-3">
-                            <Categories
-                               categories={categories} 
-                               currentCategory={this.context.selectedCategory}
-                               onItemSelect={this.context.handleGenreSelect}
-                            />
-                        </div>
-                        <div className="col-9">
-                            <section className="d-main">
-                                <div className="mb-5">
-                                    <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
-                                </div>     
-                                <div className="d-inner">
-                                    <p>Showing <strong>{totalCount}</strong> records</p>
-                                    <table className="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Content</th>
-                                                <th>Author</th>
-                                                <th>Image</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                posts.map((post, index) =>
-                                                    <tr key={index}>
-                                                        <td>{post.title.rendered}</td>
-                                                        <td>{renderHTML(post.content.rendered)}</td>
-                                                        {/* <td>{item._embedded.author[0].name}</td> */}
-                                                        <td>
-                                                            <button className="btn btn-primary btn-xs"
-                                                                onClick={()=> {
-                                                                    this.handleShow(index); 
-                                                                    this.replaceModalItem(index); 
-                                                                    
-                                                                }}
-                                                                >
-                                                                <i className="fa fa-pencil"></i>
-                                                            </button>
-                                                            <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash"></i></button>
-                                                        </td>
-                                                        <td>
-                                                            
-                                                            {post.img ? <img src={post.img} alt="Post" />: 'no image'} 
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            }
-                                        </tbody>
-                                    </table>
-                                    
-                                    <Pagination 
-                                        itemsCount={totalCount}
-                                        pageSize={pageSize}
-                                        currentPage={currentPage}
-                                        onPageChange={this.handlePageChange}    
-                                    />
-                                    <div className="mt-3 text-right">
-                                        { <Link  to='/create-new-post' className="btn btn-md btn-primary mr-3">Create New Post</Link>}
+                <div className="d-main">
+                    <div className="d-left-nav">
+                        <Categories
+                            categories={categories} 
+                            currentCategory={this.context.selectedCategory}
+                            onItemSelect={this.context.handleGenreSelect}
+                        />
+                    </div>
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-12">
+                                <section>
+                                    <div className="mb-5">
+                                        <div className="search-field">    
+                                            <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
+                                        </div>
+                                    </div>     
+                                    <div className="d-inner">
+                                        <p>Showing <strong>{totalCount}</strong> records</p>
+                                        <table className="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Content</th>
+                                                    <th>Action</th>
+                                                    <th>Image</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    posts.map((post, index) =>
+                                                        <tr key={index}>
+                                                            <td>{post.title.rendered}</td>
+                                                            <td>{renderHTML(post.content.rendered)}</td>
+                                                            {/* <td>{item._embedded.author[0].name}</td> */}
+                                                            <td>
+                                                                <button className="btn btn-primary btn-xs"
+                                                                    onClick={()=> {
+                                                                        this.handleShow(index); 
+                                                                        this.replaceModalItem(index); 
+                                                                        
+                                                                    }}
+                                                                    >
+                                                                    <i className="fa fa-pencil"></i>
+                                                                </button>
+                                                                <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash"></i></button>
+                                                            </td>
+                                                            <td>
+                                                                
+                                                                {post.img ? <img src={post.img} alt="Post" />: 'no image'} 
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                        <Pagination 
+                                            itemsCount={totalCount}
+                                            pageSize={pageSize}
+                                            currentPage={currentPage}
+                                            onPageChange={this.handlePageChange}    
+                                        />
+                                        <div className="mt-3 text-right">
+                                            { <Link  to='/create-new-post' className="btn btn-md btn-primary mr-3">Create New Post</Link>}
+                                        </div>
                                     </div>
-                                </div>
-                            </section>
-                        </div> 
+                                </section>
+                            </div> 
+                        </div>  
                     </div>  
-                </div>                                
+                </div>                                    
+
                 <ModaEdit  
-                        show={this.state.show}
-                        close={this.handleModalClose} 
-                        // posts={this.state.posts}
-                        title={modalData && modalData.title && modalData.title.rendered}
-                        content={modalData && modalData.content && modalData.content.rendered}
-                        id={modalData && modalData.id}
-                        saveModalDetails={this.saveModalDetails}         
-                    />          
+                    show={this.state.show}
+                    close={this.handleModalClose} 
+                    // posts={this.state.posts}
+                    title={modalData && modalData.title && modalData.title.rendered}
+                    content={modalData && modalData.content && modalData.content.rendered}
+                    id={modalData && modalData.id}
+                    saveModalDetails={this.saveModalDetails}         
+                />          
             </React.Fragment>
             
          );
