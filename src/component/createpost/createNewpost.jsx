@@ -38,45 +38,47 @@ class CreateNewPost extends Component {
     render() { 
         return ( 
             <React.Fragment>
-                <section className="mt-4">
-                    <div className="container">
-                        <h4>Create Post</h4>
-                        <form onSubmit={ this.handleFormSubmit }>
-                            <div className="form-group">
-                                <label>Title</label>
-                                <input 
-                                    className="form-control" 
-                                    type="text"
-                                    name="title"
-                                    placeholder="Post Title"
-                                    onChange={ this.handleInputChange }
-                                />
+                <div className="f-account">     
+                    <section className="mt-4">
+                        <div className="container">
+                            <div className="f-account-inner">
+                                <h3>Create Post</h3>
+                                <form onSubmit={ this.handleFormSubmit }>
+                                    <div className="form-group">
+                                        <label>Title</label>
+                                        <input 
+                                            className="form-control" 
+                                            type="text"
+                                            name="title"
+                                            placeholder="Post Title"
+                                            onChange={ this.handleInputChange }
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Content</label>
+                                        <textarea 
+                                            className="form-control"
+                                            placeholder="Project Description"
+                                            name="content"
+                                            onChange={ this.handleInputChange }
+                                        ></textarea>
+                                    </div>
+                                    <div className="text-right mb-4">
+                                        <Button
+                                        variant="primary"
+                                        size="lg"
+                                        type="submit"
+                                        //onClick={e => this.addPost(e)}
+                                        disabled={this.disabledAddPost()}
+                                        >
+                                        Submit
+                                        </Button>
+                                    </div>
+                                </form>
                             </div>
-                            <div className="form-group">
-                                <label>Content</label>
-                                <textarea 
-                                    className="form-control"
-                                    placeholder="Project Description"
-                                    name="content"
-                                    onChange={ this.handleInputChange }
-                                ></textarea>
-                            </div>
-                            <div className="text-right mb-4">
-                            <Button
-                            variant="primary"
-                            size="lg"
-                            type="submit"
-                            //onClick={e => this.addPost(e)}
-                            disabled={this.disabledAddPost()}
-                            >
-                            Submit
-                            </Button>
                         </div>
-                        </form>
-
-
-                    </div>
-                </section>
+                    </section>
+                </div>    
             </React.Fragment>
          );
     }

@@ -44,7 +44,7 @@ class Dashboard extends Component {
         this.setState({show:false})
      }
   saveModalDetails =  async item => {
-    console.log('item333', item)
+    //console.log('item333', item)
         this.setState({show:false})
         await this.context.onUpdatePost(item);  
       }
@@ -102,7 +102,7 @@ class Dashboard extends Component {
         // const posts = paginate(allPosts, currentPage, pageSize)
         const requiredItem = this.state.requiredItem;
         const modalData = posts[requiredItem];
-        console.log('modalData', modalData)
+       // console.log('modalData', modalData)
         //console.log('modalData', modalData)
        if (!isloading) {
             if(!posts.length && !searchQuery) return <div>
@@ -132,23 +132,15 @@ class Dashboard extends Component {
                                     </div>     
                                     <div className="d-inner">
                                         <p>Showing <strong>{totalCount}</strong> records</p>
-                                        <table className="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th>Content</th>
-                                                    <th>Action</th>
-                                                    <th>Image</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    posts.map((post, index) =>
-                                                        <tr key={index}>
-                                                            <td>{post.title.rendered}</td>
-                                                            <td>{renderHTML(post.content.rendered)}</td>
-                                                            {/* <td>{item._embedded.author[0].name}</td> */}
-                                                            <td>
+                                        <div className="row mb-5">
+                                            {
+                                                posts.map((post, index) =>
+                                                    <div  key={index} className="col-md-6 mb-4 pb-2">
+                                                        <div className="bg-blog">
+                                                            <div className="p-img"> {post.img ? <img src={post.img} alt="Post" />: 'no image'} </div>
+                                                            <h2 className="p-title">{post.title.rendered}</h2>
+                                                            <div className="p-content">{renderHTML(post.content.rendered)}</div>
+                                                            <div className="p-action">
                                                                 <button className="btn btn-primary btn-xs"
                                                                     onClick={()=> {
                                                                         this.handleShow(index); 
@@ -159,17 +151,12 @@ class Dashboard extends Component {
                                                                     <i className="fa fa-pencil"></i>
                                                                 </button>
                                                                 <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash"></i></button>
-                                                            </td>
-                                                            <td>
-                                                                
-                                                                {post.img ? <img src={post.img} alt="Post" />: 'no image'} 
-                                                                
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                }
-                                            </tbody>
-                                        </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
                                         <Pagination 
                                             itemsCount={totalCount}
                                             pageSize={pageSize}
@@ -177,7 +164,7 @@ class Dashboard extends Component {
                                             onPageChange={this.handlePageChange}    
                                         />
                                         <div className="mt-3 text-right">
-                                            { <Link  to='/create-new-post' className="btn btn-md btn-primary mr-3">Create New Post</Link>}
+                                            { <Link  to='/create-new-post' className="btn btn-md btn-primary mr-3 create-post">Create New Post</Link>}
                                         </div>
                                     </div>
                                 </section>

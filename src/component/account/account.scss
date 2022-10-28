@@ -31,5 +31,9 @@
     .btn-primary{
       border-radius:0;
     }
+    button:disabled,
+    button[disabled]{
+    cursor:default;
+  }
   }
 }

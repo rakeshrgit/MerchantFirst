@@ -334,6 +334,7 @@ justify-content: flex-start;
 .f-contact .form-control{-webkit-border-radius:0; border-radius:0; border:1px solid #b7b7b7; height:auto; padding:8px;}
 .f-contact .btn-primary{-webkit-border-radius:0; border-radius:0;}
 /* home contact end */
+.page-link{line-height:1; font-size:1.1rem; padding:9px 12px;}
 /* footer start */
 .footer-bg{
     background:#1e1e1e;
