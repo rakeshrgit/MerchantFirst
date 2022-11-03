@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './../../common/form';
 import { signUp } from "../../services/authService";
 import Joi from 'joi-browser';
+import {Redirect} from 'react-router-dom'
 import './account.css';
 class Signup extends Form {
     state = { 
@@ -26,7 +27,8 @@ class Signup extends Form {
                 _id:"subscriber",
                 name:"Subscriber"
             }
-        ]
+        ],
+        loggedIn:false
      } 
      schema = {
         first_name:Joi.string().required().label('First Name'),
@@ -59,25 +61,33 @@ class Signup extends Form {
      }
     
     render() { 
-        return (
-            <div className="f-account"> 
-                <div className="container">
-                    <div className="f-account-inner">
-                        <h3>Sign Up</h3>    
-                        <form onSubmit={this.handleRegisterSubmit} autoComplete="off">
-                        {this.renderInput('first_name', 'First Name', 'text')} 
-                        {this.renderInput('last_name', 'Last Name', 'text')}      
-                        {this.renderInput('username', 'Username', 'text')}
-                        {this.renderInput('password', 'Password', 'password')}
-                        {this.renderInput('name', 'Name')}
-                        {this.renderInput('email', 'Email', 'email')}
-                        {this.renderSelect('roles', 'Roles', this.state.roles)}
-                        {this.renderButton('Login')}    
-                        </form>
-                    </div>
-                </div>    
-            </div>
-        );
+        const { loggedIn } = this.state
+        if(loggedIn || localStorage.getItem( 'token' )){
+            return <Redirect to={`/dashboard`} noThrow/>
+        }
+        else{
+            return (
+                <div className="f-account"> 
+                    <div className="container">
+                        <div className="f-account-inner">
+                            <h3>Sign Up</h3>    
+                            <form onSubmit={this.handleRegisterSubmit} autoComplete="off">
+                            {this.renderInput('first_name', 'First Name', 'text')} 
+                            {this.renderInput('last_name', 'Last Name', 'text')}      
+                            {this.renderInput('username', 'Username', 'text')}
+                            {this.renderInput('password', 'Password', 'password')}
+                            {this.renderInput('name', 'Name')}
+                            {this.renderInput('email', 'Email', 'email')}
+                            {this.renderSelect('roles', 'Roles', this.state.roles)}
+                            {this.renderButton('Login')}    
+                            </form>
+                        </div>
+                    </div>    
+                </div>
+            );
+        }
+
+        
     }
 }
  

@@ -30,23 +30,25 @@ auth = localStorage.getItem("token");
 								<NavLink to='/'><img src={Logo} alt="payment"/></NavLink>	
 							</span>
 							<ul className="d-flex align-items-center list-unstyled mb-0 nav-main">
-								<li><Link to='/'>Home</Link></li>
-								<li><Link to='/signup'>Signup</Link></li>
-								
+								<li><NavLink to='/'>Home</NavLink></li>
 								{ isLoggedIn() ? (
 								<React.Fragment>
+									
 									<li className="nav-item">
 										<NavLink to='/dashboard'>Dashboard</NavLink>
 									</li>
 									<li className="nav-item">
-										<button onClick={() => this.handleLogout() } className="btn btn-secondary ml-3">Logout</button>
+										<button onClick={() => this.handleLogout() } className="btn btn-danger ml-3">Logout</button>
 									</li>
 									<li>{ userName ? <span>Welcome { userName }!!</span>: '' }</li>
 								</React.Fragment>
 							) : (
+								<React.Fragment>
+								<li><NavLink to='/signup'>Signup</NavLink></li>
 								<li className="nav-item">
 									<NavLink to="/login">Login</NavLink>
 								</li>
+								</React.Fragment>
 							) }
 							
 							</ul>

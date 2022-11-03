@@ -91,7 +91,7 @@ class Dashboard extends Component {
     const { pageSize, currentPage,  searchQuery, categories} = this.context;
     //console.log('searchQuery', searchQuery)   
      
-    if (count === 0) return <p>There are no movies in the database.</p>;
+    if (count === 0) return <div className="f-details d-flex w-100 align-items-center justify-content-center">Please wait fetching details</div>;
 
     const { totalCount, data: posts, isloading } = this.getPagedData();
 

@@ -30,7 +30,7 @@ class Login extends Form {
     
     doSubmit = () => { 
         // call the server
-        console.log('Submited')
+       // console.log('Submited')
     }
 
 

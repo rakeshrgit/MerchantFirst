@@ -76,4 +76,9 @@
   background-color: #043a72;
   border-color: #043a72;
 }
+
+.f-details {
+  text-align: center;
+  min-height: 70vh;
+}
 /*# sourceMappingURL=dashboard.css.map */
