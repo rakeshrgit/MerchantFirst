@@ -8,6 +8,11 @@ export function getPageData() {
   return apiService.get(projectsEndpoint);
 }
 
+export function getAboutData() {
+  const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/pages/19";
+  return apiService.get(projectsEndpoint);
+}
+
 export function getPosts() {
     const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts/?per_page=100";
     return apiService.get(projectsEndpoint);

@@ -14,6 +14,7 @@ import PrivateRoute from './component/navbar/privareroute';
 import Signup from './component/account/signup';
 import AccountInfo from './component/common/accountInfo';
 import Footer from './pages/footer';
+import About from './pages/about';
 
 function App() {
   return (
@@ -23,12 +24,13 @@ function App() {
           <Switch>
               <Route path="/login" exact component={Login} />
               {/* <Route path="/dashboard"  component={Dashboard} /> */}
+              <Route path="/about" component={About} />
               <PrivateRoute path="/dashboard"  component={Dashboard} />
               <Route path="/create-post"  component={CreatePost} />
               <Route path="/create-new-post"  component={CreateNewPost} />
               <Route path="/signup" component={Signup}/>
               <Route path="/success" component={AccountInfo}/>
-              <Route path="/" exact component={HeaderBanner} />
+             <Route path="/" exact component={HeaderBanner} />
           </Switch>
           <ToastContainer />
           </ProjectsContext>  

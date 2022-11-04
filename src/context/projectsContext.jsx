@@ -9,7 +9,8 @@ import{
     updatePost,
     createPost,
     getPostWithImage,
-    getPageData
+    getPageData,
+    getAboutData
 } from "../services/projects";
 
 
@@ -20,6 +21,7 @@ export class ProjectsContext extends Component {
     state = { 
         posts:[],
         pages:[],
+        aboutData:[],
         categories:[],
         isloading: false,
         pageSize: 4, // for pagination
@@ -80,15 +82,25 @@ export class ProjectsContext extends Component {
               this.setState({ pages, isloading: true });
               //console.log('page data context',pages);
             }
-           
           });
-          
-
         } catch (err) {
           this.setState({ pages: [], isloading: true });
         }
       }; 
 
+      getAboutPageData = async () => {
+        try {
+          await getAboutData(JSON.stringify()).then(response => {
+            if (response.status === 200) {
+              const aboutData = response.data;
+              this.setState({ aboutData });
+              console.log('about page data', aboutData);
+            }
+          });
+        } catch (err) {
+          this.setState({ aboutData: [], isloading: true });
+        }
+      }; 
 
       onDeletePost = async (id) => {
         //console.log('onDeletePost', id)
@@ -165,7 +177,8 @@ export class ProjectsContext extends Component {
                     addNewPost:this.addNewPost,
                     getPostWithImage: this.getPostWithImage ,
                     handleSearch: this.handleSearch,
-                    handleGenreSelect: this.handleGenreSelect
+                    handleGenreSelect: this.handleGenreSelect,
+                    getAboutPageData: this.getAboutPageData
                 }}
                 
             >
