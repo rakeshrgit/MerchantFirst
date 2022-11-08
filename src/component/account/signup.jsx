@@ -47,7 +47,8 @@ class Signup extends Form {
       await signUp(JSON.stringify(account)).then(response => {
         if (response.status === 201 ) {
           console.log("signUp Data: ", response.data);
-          if (response.data) {
+          if (response.data === 201) {
+            return <Redirect to={`/dashboard`} noThrow/>
             //const responseData = response.data;
             //window.location.href = "/success";
           
@@ -79,7 +80,7 @@ class Signup extends Form {
                             {this.renderInput('name', 'Name')}
                             {this.renderInput('email', 'Email', 'email')}
                             {this.renderSelect('roles', 'Roles', this.state.roles)}
-                            {this.renderButton('Login')}    
+                            {this.renderButton('Submit')}    
                             </form>
                         </div>
                     </div>    

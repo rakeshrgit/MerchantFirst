@@ -49,14 +49,14 @@ export async function  signUp(data) {
     } 
 
   }else{
-    console.log('dont have any token')
+    //console.log('dont have any token')
     const siteURL = 'https://www.w3standards.in/'
       const loginData ={
         username:'admin',
         password:'admin12345678'
       };
       const res = await axios.post(`${siteURL}/wp-json/jwt-auth/v1/token`, loginData);
-      console.log('token', res.data.token)
+      //console.log('token', res.data.token)
       if(undefined === res.data.token ){
         //this.setState({loading:false})
         //console.log()
@@ -69,7 +69,7 @@ export async function  signUp(data) {
   } 
   
   
-  console.log('adminToken', adminToken)
+  //console.log('adminToken', adminToken)
   const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/users";
   return apiService.post(projectsEndpoint,data,{
     headers: {
