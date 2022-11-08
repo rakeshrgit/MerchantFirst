@@ -2,6 +2,8 @@ import apiService from './httpServices'
 import { globalConstants } from "../globalvariables";
 //import function from './../networkDetector/networkDetector';
 const APIBASEURL = globalConstants.BASE_URL;
+const apiConsumerKey = process.env.REACT_APP_SECRET_USER_KEY;
+const apiConsumerSecret = process.env.REACT_APP_SECRET_CONSUMER_KEY;
 
 export function getPageData() {
   const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/book";
@@ -82,3 +84,15 @@ export async function  getPostWithImage(posts){
      
   });
   }
+
+  export function getOrders(item) {
+    //console.log('apiConsumerSecret', apiConsumerSecret)
+    const projectsEndpoint = `${APIBASEURL}orders?consumer_key=${apiConsumerKey}&consumer_secret=${apiConsumerSecret}`;
+    // console.log('projectsEndpoint', projectsEndpoint)
+     return apiService.post(projectsEndpoint,item,{
+       headers: {
+           'Content-Type': 'application/json',
+      }
+   });
+  }
+  

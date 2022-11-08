@@ -32,6 +32,8 @@ auth = localStorage.getItem("token");
 							<ul className="d-flex align-items-center list-unstyled mb-0 nav-main">
 								<li><NavLink to='/'>Home</NavLink></li>
 								<li><NavLink to='/about'>About Us</NavLink></li>
+								<li><NavLink to='/product'>Products</NavLink></li>
+								
 								{ isLoggedIn() ? (
 								<React.Fragment>
 									

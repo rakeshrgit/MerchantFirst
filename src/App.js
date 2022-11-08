@@ -15,22 +15,32 @@ import Signup from './component/account/signup';
 import AccountInfo from './component/common/accountInfo';
 import Footer from './pages/footer';
 import About from './pages/about';
+import ProductList from './products/productList';
+import AddToCart from './products/cart';
+import NavbarFn from './component/navbar/navbarfn';
+import ProductDetails from './products/productDetail';
+import Checkout from './products/checkoutNew';
 
 function App() {
   return (
     <React.Fragment>
       <ProjectsContext>
-          <Navbar/>
+          {/* <Navbar/> */}
+          <NavbarFn/>
           <Switch>
               <Route path="/login" exact component={Login} />
               {/* <Route path="/dashboard"  component={Dashboard} /> */}
               <Route path="/about" component={About} />
+              <Route path="/product" component={ProductList} />
+              <Route  path="/product/:id"  component={ProductDetails} />
+              <Route path="/cart" component={AddToCart} />
               <PrivateRoute path="/dashboard"  component={Dashboard} />
               <Route path="/create-post"  component={CreatePost} />
               <Route path="/create-new-post"  component={CreateNewPost} />
               <Route path="/signup" component={Signup}/>
               <Route path="/success" component={AccountInfo}/>
-             <Route path="/" exact component={HeaderBanner} />
+              <Route path="/" exact component={HeaderBanner} />
+              <Route path='/checkout-new' component={Checkout} />
           </Switch>
           <ToastContainer />
           </ProjectsContext>  

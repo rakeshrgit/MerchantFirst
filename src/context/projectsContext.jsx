@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { toast } from "react-toastify";
-
+import {ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import{
   
     getPosts,
@@ -10,7 +10,8 @@ import{
     createPost,
     getPostWithImage,
     getPageData,
-    getAboutData
+    getAboutData,
+    getOrders
 } from "../services/projects";
 
 
@@ -27,7 +28,9 @@ export class ProjectsContext extends Component {
         pageSize: 4, // for pagination
         currentPage:1,
         requiredItem: 0,
-        searchQuery:""
+        searchQuery:"",
+        post_billing:[]
+        
      };
   
      handlePageChange = page => {
@@ -161,6 +164,24 @@ export class ProjectsContext extends Component {
           }
         }
       };  
+
+      getAllOrders = async (item) => {
+        try {
+            await getOrders(item).then(response => {
+              //console.log('response', response.data)
+              if (response.status === 201 || response.status === 200) {
+               const billing = response.data;
+               this.setState({ post_billing: billing });
+                console.log('order details',billing);
+                //toast.success("Order Completed");
+              } else {
+                //this.setState({isloading: false }); 
+                toast.error("Order Not Completed");
+              }
+            });
+            
+          } catch (err) {this.setState({isloading: false }); }
+       };
     render() { 
       
         return ( 
@@ -178,13 +199,14 @@ export class ProjectsContext extends Component {
                     getPostWithImage: this.getPostWithImage ,
                     handleSearch: this.handleSearch,
                     handleGenreSelect: this.handleGenreSelect,
-                    getAboutPageData: this.getAboutPageData
+                    getAboutPageData: this.getAboutPageData,
+                    getAllOrders: this.getAllOrders
                 }}
                 
             >
                 
                 {this.props.children}
-
+              <ToastContainer />   
             </Context.Provider>
          );
     }
