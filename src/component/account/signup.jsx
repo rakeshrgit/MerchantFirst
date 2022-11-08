@@ -64,6 +64,7 @@ class Signup extends Form {
     render() { 
         const { loggedIn } = this.state
         if(loggedIn || localStorage.getItem( 'token' )){
+            
             return <Redirect to={`/dashboard`} noThrow/>
         }
         else{
