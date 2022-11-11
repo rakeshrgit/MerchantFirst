@@ -16,7 +16,8 @@ class Dashboard extends Component {
         loading: false,
         error: null,
         show:false,
-        categories:[]
+        categories:[],
+        dclick:false
     }
      static contextType = ProjectsContext; 
     componentDidMount() {
@@ -52,7 +53,9 @@ class Dashboard extends Component {
         this.context.handlePageChange(page);   
        
       };  
-      
+      handleDashClick=()=>{
+        this.setState({dclick:!this.state.dclick})
+    }  
       getPagedData = () => {
         const {
           pageSize,
@@ -114,18 +117,22 @@ class Dashboard extends Component {
         return ( 
             <React.Fragment>
                 <div className="d-main">
-                    <div className="d-left-nav">
+                    <div className= {this.state.dclick ? "d-left-nav d-menu-active" : "d-left-nav"}>
                         <Categories
                             categories={categories} 
                             currentCategory={this.context.selectedCategory}
                             onItemSelect={this.context.handleGenreSelect}
+                           
                         />
+                        <div className="d-nav" onClick={this.handleDashClick}>
+                            <i className={this.state.dclick ? "fa fa-times fa-2x" : "fa fa-bars fa-2x"}></i>
+                        </div>
                     </div>
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12">
                                 <section>
-                                    <div className="mb-5">
+                                    <div className="mb-2 mb-md-5">
                                         <div className="search-field">    
                                             <SearchBox value={searchQuery} onChange={this.context.handleSearch}/>    
                                         </div>

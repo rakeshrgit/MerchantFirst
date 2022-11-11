@@ -8,7 +8,7 @@ class Categories extends Component {
             currentCategory, 
             onItemSelect,
             valueProperty,
-            textProperty 
+            textProperty,    
         } = this.props;
 
         //console.log('post categories', currentCategory)  

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ProjectsContext from '../context/projectsContext';
-import renderHTML from 'react-render-html';
 class About extends Component {
     static contextType = ProjectsContext; 
     componentDidMount() {
@@ -8,7 +7,7 @@ class About extends Component {
     }
     render() { 
         const { aboutData } = this.context;
-        console.log('about', aboutData)
+        //console.log('about', aboutData)
         return (
             <div className="f-account">
                 <div className="container">    

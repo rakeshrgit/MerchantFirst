@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import './css/custom.css';
-import { Link } from 'react-router-dom';
 import SectionAbout from '../../pagesection/sectionAbout';
 import AdvantageBlock from './../../pagesection/sectionAdvantage';
 import "slick-carousel/slick/slick.css";
@@ -9,7 +8,7 @@ import ProjectsContext from '../../context/projectsContext';
 import ReviewSlider from './../../pagesection/reviewSlider';
 import ContactUs from './../../formcontact/contactus';
 import Loader from "../../images/loader.gif";
-import Footer from './../../pages/footer';
+
 
 class HeaderBanner extends Component {
     state = { 

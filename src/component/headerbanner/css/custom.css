@@ -321,6 +321,10 @@ justify-content: flex-start;
 .header-fixed .top-scroll{opacity:1;}
 .section-home{min-height:100vh;}
 /* new design start */
+.nav-icon{display:none;}
+.nav-main{
+    display:-webkit-box; display:-ms-flexbox; display:flex; -webkit-box-align:center; -ms-flex-align:center; align-items:center; margin:0; padding:0;
+}
 .loader{position:fixed; left:50%; top:50%; margin-top:-30px;;}
 .h-logo{width:100%; max-width:260px;}
 .navbarinner{padding: 25px 22px; background: #fff; -webkit-box-shadow:0px 0px 9px #7a7a7a; box-shadow:0px 0px 9px #7a7a7a;}
@@ -355,4 +359,24 @@ justify-content: flex-start;
 .copyright-text{color:#fff; font-size:1.1rem;}
 
 /* footer end */
-
+@media screen and (max-width: 767px) {
+    .nav-icon{display:block;}
+    .nav-main{
+        position:absolute;
+        width:100%;
+        height:calc(100% - 86px);
+        top:86px;
+        background:#fff;
+        -webkit-box-orient: vertical;    
+        -webkit-box-direction: normal;    
+        -ms-flex-direction: column;    
+        flex-direction: column;
+        left:-100%;
+        transition: all 0.5s ease;
+        -webkit-box-align: start;-ms-flex-align: start;align-items: start;
+        z-index:100;
+    }
+    .nav-main > li{margin:2px 0px 2px 10px;}
+    .nav-main.menu-active{left:0;}
+    
+}
