@@ -74,7 +74,7 @@ height:100vh;
 	 margin:auto; max-width:500px; margin-bottom:0; letter-spacing:2px;
 }
 .contact{margin:32px 0px 0px 0px;}
-.contact a{
+.contact button{
 	font-family: 'poppinssemibold';
     color: #0287c5;
     display: inline-block;
@@ -87,6 +87,7 @@ height:100vh;
     border-radius:0px;
 	text-decoration:none;
     cursor: pointer;
+    border:none;
 }
 
 .bg-help{
