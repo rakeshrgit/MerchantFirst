@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProjectsContext from '../context/projectsContext';
+import renderHTML from 'react-render-html';
 class About extends Component {
     static contextType = ProjectsContext; 
     componentDidMount() {
@@ -14,6 +15,9 @@ class About extends Component {
                     <div>{aboutData.link}</div>
                     <div>{aboutData.comment_status}</div>
                     <div>{aboutData.date_gmt}</div>
+                    <div>{aboutData.acf?aboutData.acf.about_text: null }</div>
+                    <div>{aboutData.acf?<img src={aboutData.acf.image} alt="image"/>: null }</div>
+                    {/* <div>   {aboutData.content? renderHTML(aboutData.content.rendered) : null }</div> */}
                     {/* <div>{aboutData.content.rendered}</div>  */}
                 </div>
             </div>
