@@ -32,7 +32,7 @@ class HeaderBanner extends Component {
     }
     
     render() { 
-        const {pages, loading} = this.context;  
+        const {pages} = this.context;  
         //console.log('pages', pages)
         if(pages.length > 0){
             return ( 
@@ -44,8 +44,8 @@ class HeaderBanner extends Component {
                                     <div className="container">
                                         <div className="content-banner">
                                             <h2>{item.acf.banner_text}</h2>    
-                                            <div className="contact"><a 
-                                                onClick={this.handleScroll}>{item.acf.banner_link}</a></div>  
+                                            <div className="contact"><button 
+                                                onClick={this.handleScroll}>{item.acf.banner_link}</button></div>  
                                         </div>
                                     </div>
                                     <div className="banner-head">
@@ -73,7 +73,7 @@ class HeaderBanner extends Component {
              );
         }
         else{
-            return (<div>
+            return (<div className="l-img-slide">
                 <img className="loader" src={Loader} alt="Loader"/>
             </div>)
         }

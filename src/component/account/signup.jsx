@@ -2,7 +2,8 @@ import React from 'react';
 import Form from './../../common/form';
 import { signUp } from "../../services/authService";
 import Joi from 'joi-browser';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import Loader from "../../images/loader.gif";
 import './account.css';
 class Signup extends Form {
     state = { 
@@ -14,6 +15,7 @@ class Signup extends Form {
             name:"",
             email : "",
             roles:""
+           
         },
         errors:{
 
@@ -28,7 +30,9 @@ class Signup extends Form {
                 name:"Subscriber"
             }
         ],
-        loggedIn:false
+        loggedIn:false,
+        success:false,
+        loading:false
      } 
      schema = {
         first_name:Joi.string().required().label('First Name'),
@@ -44,25 +48,34 @@ class Signup extends Form {
       
     const account = this.state.data;
     try {
+      this.setState({loading:true})  
       await signUp(JSON.stringify(account)).then(response => {
         if (response.status === 201 ) {
           console.log("signUp Data: ", response.data);
-          if (response.data === 201) {
-            return <Redirect to={`/dashboard`} noThrow/>
+           // return <Redirect to={`/dashboard`} noThrow/>
             //const responseData = response.data;
             //window.location.href = "/success";
+            this.setState({loading:false, success:true})
           
-          }
           if (!response.data.status) {
            
           }
         }
       });
-    } catch (err) {}
+    } catch (err) {
+        this.setState({loading:false, error:true})
+    }
      }
     
     render() { 
-        const { loggedIn } = this.state
+        const { loggedIn, loading, success, error } = this.state
+        
+        if(!loading && success){
+           return  <Redirect to={`/success`} noThrow/>          
+        }
+        if(!loading && error){
+            return <h2>Error Found</h2>    
+        }
         if(loggedIn || localStorage.getItem( 'token' )){
             
             return <Redirect to={`/dashboard`} noThrow/>
@@ -83,6 +96,7 @@ class Signup extends Form {
                             {this.renderSelect('roles', 'Roles', this.state.roles)}
                             {this.renderButton('Submit')}    
                             </form>
+                            { loading && <img className="loader" src={Loader} alt="Loader"/> }
                         </div>
                     </div>    
                 </div>
