@@ -89,9 +89,6 @@ height:100vh;
     cursor: pointer;
     border:none;
 }
-.contact button:focus{
-    outline:none;
-}
 .bg-help{
 	background:#f6f6fc; padding:60px 0px 72px 0px;
 }
