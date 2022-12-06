@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 import { Button, Alert } from "react-bootstrap";
 //import lopginBg from "./images/lopginBg.jpg";
-
+import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import Loader from "../../images/loader.gif";
@@ -155,10 +155,12 @@ class Login extends Component {
                         </Button>
                       </div>
                       { loading && <img className="loader" src={Loader} alt="Loader"/> }
+                      <div className="mt-4 d-account">Don't have an account yet? <NavLink to="/signup">Create Account</NavLink></div>
                   </form> 
                 </div>
             </div>
           </div>
+          
         </main>
       );
     }    

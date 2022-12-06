@@ -47,4 +47,43 @@
 .f-account .f-account-inner button[disabled] {
   cursor: default;
 }
+
+.a-s-info {
+  min-height: calc(100vh - 300px);
+}
+
+.success-in {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+  background: #fff;
+  -webkit-box-shadow: 0px 1px 19px #afafaf;
+  box-shadow: 0px 1px 19px #afafaf;
+  padding: 50px 20px;
+}
+
+.s-check i {
+  color: #459156;
+}
+
+.a-btn-login a {
+  background: #1a8532;
+  color: #fff;
+  font-size: 1.3rem;
+  display: inline-block;
+  padding: 8px 19px;
+  text-decoration: none;
+}
+
+.s-error {
+  min-height: calc(100vh - 400px);
+  color: red;
+  margin: auto;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  padding: 30px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
 /*# sourceMappingURL=account.css.map */

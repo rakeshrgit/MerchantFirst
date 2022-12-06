@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './../../common/form';
 import { signUp } from "../../services/authService";
 import Joi from 'joi-browser';
+import {NavLink} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import Loader from "../../images/loader.gif";
 import './account.css';
@@ -74,7 +75,7 @@ class Signup extends Form {
            return  <Redirect to={`/success`} noThrow/>          
         }
         if(!loading && error){
-            return <h2>Error Found</h2>    
+            return <div className="pt-5 pb-5"><div class="s-error">Something went wrong please try again</div></div>    
         }
         if(loggedIn || localStorage.getItem( 'token' )){
             
@@ -97,6 +98,7 @@ class Signup extends Form {
                             {this.renderButton('Submit')}    
                             </form>
                             { loading && <img className="loader" src={Loader} alt="Loader"/> }
+                            <div className="mt-4 d-account">Already have an account? <NavLink to="/login">Log in</NavLink></div>
                         </div>
                     </div>    
                 </div>
