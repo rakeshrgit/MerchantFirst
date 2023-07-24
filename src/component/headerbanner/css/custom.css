@@ -62,21 +62,18 @@ input:focus{outline:none;}
 .social-media-header > ul > li > a{ color:#fff;  text-align:center; 
 }
 .header-fixed .social-media-header > ul > li > a{color:#222;}
-.banner-main{background:url(../../../images/home_banner.jpg) top center no-repeat; background-size:cover;
-height:100vh;
-}
-.banner-head{position:absolute; left:50%; bottom:0; margin-left:-500px;}
-.content-banner{text-align:center; margin-top:24vh; position: relative; z-index:99;}
-
+.banner-main{background:url(../../../images/home_banner.jpg) top center no-repeat; background-size:cover;}
+.banner-head{}
+.content-banner{text-align:left; position: relative; z-index:99;}
 .content-banner h2{
-	font-family: 'poppinssemibold'; color:#fff; font-size:2.9rem;  width:100%;
-	 line-height:3.2rem; -webkit-text-shadow:0px 3px 3px rgba(0,0,0,0.7); text-shadow:0px 3px 3px rgba(0,0,0,0.7); text-transform: uppercase;
-	 margin:auto; max-width:500px; margin-bottom:0; letter-spacing:2px;
+	font-family: 'poppinsbold'; color:#192335; font-size:4.9rem;  width:100%;
+	 line-height:1.2; text-transform: uppercase;
+	 margin:auto;  margin-bottom:0; letter-spacing:2px;
 }
 .contact{margin:32px 0px 0px 0px;}
 .contact button{
 	font-family: 'poppinssemibold';
-    color: #0287c5;
+    color: #6546cc;
     display: inline-block;
     background: #fff;
     width: 168px;
@@ -89,13 +86,16 @@ height:100vh;
     cursor: pointer;
     border:none;
 }
+.contact button:hover{
+    box-shadow:none; outline:none;
+}
 .bg-help{
-	background:#f6f6fc; padding:60px 0px 72px 0px;
+	background:#f9f9ff; padding:60px 0px 72px 0px;
 }
 .help-text h4{
 	margin: 0px 0px 20px 0px;
-    font-family: 'poppinsmedium';
-    font-size: 33px;
+    font-family: 'poppinsbold';
+    font-size: 2.5rem;
 }
 .help-text p{
 	margin: 0px 0px 12px 0px;
@@ -103,6 +103,7 @@ height:100vh;
 	color: #141414;
 	line-height:1.6rem;
 	text-align:left;
+    font-size:1.1rem;
 }
 .btn-abt{
 	margin:20px 0px 0px 0px;
@@ -123,19 +124,20 @@ height:100vh;
 	margin:0px 5px 0px 0px;
 }
 .about_box {
-
     padding: 22px;
-    background: #ffffff;
+    background: rgba(39, 0, 255, 0.5);
+    background-image:linear-gradient(218.15deg, #b966e763 0%, #2f57ef4a 100%);
     border-radius: 40px 0px 40px 0px;
 	-webkit-box-shadow: 0px 4px 18px rgba(0,0,0,0.1);
 	box-shadow: 0px 4px 18px rgba(0,0,0,0.1);
     text-align: center;
     margin-top: 34px;
     cursor: pointer;
-
+    height:100%;
 }
-.s-benefit{padding:50px 0px 50px 0px; background:#fff;}
-.s-benefit h3{margin:0px 0px 0px 0px; font-family: 'poppinsmedium'; font-size:38px;}
+.about_box:hover{background:#192335;  transition: background-color 0.5s ease;}
+.s-benefit{padding:90px 150px 90px 150px; background:#fff;}
+.s-benefit h3{margin:0px 0px 0px 0px; font-family: 'poppinsbold'; font-size:4rem; color:#192335;}
 .text-service{margin:0px 0px 60px 0px;}
 .text-service p{
 	margin: 0px 0px 0px 0px;
@@ -177,7 +179,15 @@ font-size:21px; color:#fff; text-align: center; line-height:40px;
 	line-height: 1.8rem;
 }
 .outcomes-desc p a{color:#000; text-decoration:none;}
-.section-client{padding:40px 0px 52px 0px; background:#f6f6fc;}
+.section-client{padding:60px 0px 75px 0px; 
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2f57ef+0,9e77ff+100 */
+background: #2f57ef; /* Old browsers */
+background: -moz-linear-gradient(left,  #2f57ef 0%, #9e77ff 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #2f57ef 0%,#9e77ff 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #2f57ef 0%,#9e77ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f57ef', endColorstr='#9e77ff',GradientType=1 ); /* IE6-9 */
+
+}
 .client-content-top h5{color:#074493; font-family: 'poppinsmedium'; font-size:22px;
 margin:0px 0px 15px 0px;
 }
@@ -205,8 +215,8 @@ background:#ff6317;
 .text-slide-info{
 	 padding:8px 0px 6px 0px; min-height:74px;
 }
-.text-slide-info h6{font-family: 'poppinsmedium'; margin:0px 0px 0px 0px; font-size:22px; color:#074493;}
-.text-slide-info p{margin:14px 0px 13px 0px; color:#1b1b1b; padding:0px 94px 0px 94px; }
+.text-slide-info h6{font-family: 'poppinsmedium'; margin:0px 0px 0px 0px; font-size:22px; color:#ffffff; font-size:2.6rem;}
+.text-slide-info p{margin:14px 0px 13px 0px; color:#fff; padding:0px 94px 0px 94px; font-size:1.4rem;}
 
 .bg-badge{background:#074593; padding:36px 0px 36px 0px;}
 .bg-badge p{color:#fff;}
@@ -327,10 +337,11 @@ justify-content: flex-start;
 }
 .loader{position:fixed; left:50%; top:50%; margin-top:-30px;;}
 .h-logo{width:100%; max-width:260px;}
-.navbarinner{padding: 25px 22px; background: #fff; -webkit-box-shadow:0px 0px 9px #7a7a7a; box-shadow:0px 0px 9px #7a7a7a;}
-.nav-main > li{margin:0px 15px 0px 0px; font-size:1.1rem;}
+.navbarinner{padding: 8px 22px; background: #fff; -webkit-box-shadow:0px 0px 9px #7a7a7a; box-shadow:0px 0px 9px #7a7a7a;}
+.nav-main > li{margin:0px 15px 0px 0px; font-size:1.2rem; font-weight:700;}
 .nav-main > li:last-child{margin-right:0;}
 .nav-main > li a{color:#000; text-decoration:none;}
+.nav-main > li a:hover{color:#6646cc;}
 /* new design end */
 /* home contact start */
 .f-contact{padding:60px 0px 60px 0px;}
@@ -381,3 +392,10 @@ justify-content: flex-start;
     
 }
 .l-img-slide{height:80vh;}
+.container-splash{
+    padding:100px 150px;
+}
+.adv-icon{margin:0px 0px 20px 0px;}
+.adv-icon img{max-width:90px;}
+.about_box h4{color:#fff; margin:0px 0px 12px 0px; font-size:2rem;}
+.adv-desc{font-size:1.2rem; color:#fff;}

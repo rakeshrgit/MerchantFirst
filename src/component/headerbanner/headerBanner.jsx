@@ -39,26 +39,31 @@ class HeaderBanner extends Component {
                 <React.Fragment>
                     {pages.map(item =>
                         <div key={item.id} className="section-home">
-                            <div className="banner-main d-flex align-items-center flex-column">
-                                <div className="container">
-                                    <div className="container">
-                                        <div className="content-banner">
-                                            <h2>{item.acf.banner_text}</h2>    
-                                            <div className="contact"><button 
-                                                onClick={this.handleScroll}>{item.acf.banner_link}</button></div>  
+                            <div className="banner-main">
+                                <div className="container-splash">
+                                    <div className="row align-items-center">
+                                        <div className="col-lg-6">
+                                            <div className="content-banner">
+                                                <h2>{item.acf.banner_text}</h2>    
+                                                <div className="contact"><button 
+                                                    onClick={this.handleScroll}>{item.acf.banner_link}</button></div>  
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <div className="banner-head">
+                                                <img src={item.acf.banner_image} alt="Merchant"/>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="banner-head">
-                                        <img src={item.acf.banner_image} alt="Merchant"/>
-                                    </div>
                                 </div>
-                            </div>
-                            <div className="bg-help">
-                                <SectionAbout  contentabout={item.acf.section_about} />
                             </div>
                             <div className="s-benefit">
                                 <AdvantageBlock contentadv={item.acf.section_advantage}/>
                             </div>
+                            <div className="bg-help">
+                                <SectionAbout  contentabout={item.acf.section_about} />
+                            </div>
+                            
                             <div className="section-client">
                                 <div className="container">
                                     <ReviewSlider review={item.acf.review_slider}/>

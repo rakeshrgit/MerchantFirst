@@ -44,7 +44,7 @@ auth = localStorage.getItem("token");
 								</React.Fragment>
 							) : (
 								<React.Fragment>
-								<li><NavLink to='/signup' onClick={this.handleClick}>Signup</NavLink></li>
+								<li><NavLink to='/signup' onClick={this.handleClick}>Sign Up</NavLink></li>
 								<li className="nav-item">
 									<NavLink to="/login" onClick={this.handleClick}>Login</NavLink>
 								</li>

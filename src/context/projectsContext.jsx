@@ -94,7 +94,7 @@ export class ProjectsContext extends Component {
             if (response.status === 200) {
               const aboutData = response.data;
               this.setState({ aboutData });
-              //console.log('about page data', aboutData);
+             // console.log('about page data', aboutData);
             }
           });
         } catch (err) {

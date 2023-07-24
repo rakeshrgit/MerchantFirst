@@ -26,7 +26,7 @@ class ContactUs extends Form {
             {this.renderInput('name', 'Name', 'text')}
             {this.renderInput('email', 'Email', 'email')}
              {this.renderInput('phone', 'Phone', 'text')}
-            {this.renderButton('Login')}    
+            {this.renderButton('Submit')}    
             </form>
 
             </div>

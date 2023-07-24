@@ -9,8 +9,9 @@ export function getPageData() {
 }
 
 export function getAboutData() {
-  const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/pages/19";
+  const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/pages/28";
   return apiService.get(projectsEndpoint);
+ // console.log('projectsEndpoint', projectsEndpoint)
 }
 
 export function getPosts() {
@@ -40,6 +41,7 @@ export async function  getPostWithImage(posts){
 
 export function deletePost(id) {
     const authToken = localStorage.getItem( 'token' );
+    //console.log('authToken', authToken)
     const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts/" + id;
     return apiService.delete(projectsEndpoint,id,{
       headers: {
