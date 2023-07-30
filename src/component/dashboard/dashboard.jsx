@@ -9,10 +9,12 @@ import { paginate } from './../../utils/paginate';
 import SearchBox from './../../common/searchBox';
 import _ from "lodash";
 import Categories from './../categories/Categories';
+import DummypostImg from "../../images/d_post.jpg";
 class Dashboard extends Component {
     state = { 
         requiredItem: 0,
         postid: null,
+        singlepostid: null,
         loading: false,
         error: null,
         show:false,
@@ -56,6 +58,13 @@ class Dashboard extends Component {
       handleDashClick=()=>{
         this.setState({dclick:!this.state.dclick})
     }  
+    handleSinglePost = async id =>{
+        await this.setState({ singlepostid: id });
+        this.context.getSinglePost(this.state.singlepostid);  
+        let path = `single-post/${id}`;
+        this.props.history.push(path);
+       // console.log('ii',id)
+    }
       getPagedData = () => {
         const {
           pageSize,
@@ -81,9 +90,9 @@ class Dashboard extends Component {
         const posts = paginate(sorted, currentPage, pageSize);
     
         return { totalCount: filtered.length, data: posts };
-      };
+    };
 
-
+      
 
     render() { 
 
@@ -97,7 +106,7 @@ class Dashboard extends Component {
     if (count === 0) return <div className="f-details d-flex w-100 align-items-center justify-content-center">Please wait fetching details</div>;
 
     const { totalCount, data: posts, isloading } = this.getPagedData();
-
+            
        // console.log('all data', posts)
         
         // const{length:count} = this.context.posts;
@@ -144,11 +153,15 @@ class Dashboard extends Component {
                                                 posts.map((post, index) =>
                                                     <div  key={index} className="col-md-6 mb-4 pb-2">
                                                         <div className="bg-blog">
-                                                            <div className="p-img"> {post.img ? <img src={post.img} alt="Post" />: 'no image'} </div>
+                                                            <div className="p-img"> {post.img ? <img src={post.img} alt="Post" />: <img src={DummypostImg} alt=""/>} </div>
                                                             <h2 className="p-title">{post.title.rendered}</h2>
-                                                            <div className="p-content">{renderHTML(post.content.rendered)}</div>
+                                                            <div className="p-content">
+                                                            {post.content.rendered.length > 250 ?
+    <div className="post-info">{renderHTML(post.content.rendered.substring(0, 250))}<span>...</span></div> : renderHTML(post.content.rendered)}
+                                                            </div>
                                                             <div className="p-action">
-                                                                <button className="btn btn-primary btn-xs"
+                                                                {post.content.rendered.length > 250 ? <button onClick={()=>this.handleSinglePost(post.id)} className="btn btn-primary btn-xs"><i className='fa fa-eye'></i></button> : null}
+                                                                <button className="btn btn-primary btn-xs ml-1"
                                                                     onClick={()=> {
                                                                         this.handleShow(index); 
                                                                         this.replaceModalItem(index); 

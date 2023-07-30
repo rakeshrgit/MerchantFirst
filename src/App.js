@@ -15,6 +15,7 @@ import Signup from './component/account/signup';
 import AccountInfo from './component/common/accountInfo';
 import Footer from './pages/footer';
 import About from './pages/about';
+import SinglePost from './component/singlepost/singlepost';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path="/create-new-post"  component={CreateNewPost} />
               <Route path="/signup" component={Signup}/>
               <Route path="/success" component={AccountInfo}/>
+              <Route path="/single-post/:id" component={SinglePost}/>
              <Route path="/" exact component={HeaderBanner} />
           </Switch>
           <ToastContainer />

@@ -10,10 +10,9 @@ import{
     createPost,
     getPostWithImage,
     getPageData,
-    getAboutData
+    getAboutData,
+    getsingle
 } from "../services/projects";
-
-
 const Context = React.createContext();
 //var stringify = require("json-stringify-safe");
 
@@ -22,6 +21,7 @@ export class ProjectsContext extends Component {
         posts:[],
         pages:[],
         aboutData:[],
+        spost:null,
         categories:[],
         isloading: false,
         pageSize: 4, // for pagination
@@ -119,7 +119,7 @@ export class ProjectsContext extends Component {
           } catch (err) {}
       };
       onUpdatePost = async (item) => {
-       console.log('item', item)
+       //console.log('item', item)
       //  const posts = this.state.posts;
          // console.log('item', item)
          this.setState({isloading: true }); 
@@ -161,8 +161,26 @@ export class ProjectsContext extends Component {
           }
         }
       };  
+      getSinglePost = async (id) => {
+        try {
+            await getsingle(id).then(response => {
+              //console.log('response.status', response.status)
+              if (response.status === 200) {
+                const singlepost = response.data;
+                this.setState({ spost: singlepost });
+                //console.log('posts ee',singlepost);
+              }
+              else {
+
+              }
+            });
+          } catch (err) {
+            
+          }
+
+
+        }; 
     render() { 
-      
         return ( 
             <Context.Provider
             
@@ -178,7 +196,8 @@ export class ProjectsContext extends Component {
                     getPostWithImage: this.getPostWithImage ,
                     handleSearch: this.handleSearch,
                     handleGenreSelect: this.handleGenreSelect,
-                    getAboutPageData: this.getAboutPageData
+                    getAboutPageData: this.getAboutPageData,
+                    getSinglePost: this.getSinglePost
                 }}
                 
             >

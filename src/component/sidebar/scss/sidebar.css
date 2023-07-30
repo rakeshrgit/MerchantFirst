@@ -7,10 +7,8 @@
   z-index: 999;
   background: #24404d;
   color: #fff;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-
 #sidebar .sidebar-header {
   font-size: 26px;
   font-weight: 700;
@@ -19,8 +17,6 @@
   background: #ccc;
   color: #000;
 }
-
 #sidebar.active {
   margin-left: -250px;
-}
-/*# sourceMappingURL=sidebar.css.map */
+}/*# sourceMappingURL=sidebar.css.map */

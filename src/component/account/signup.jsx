@@ -75,7 +75,7 @@ class Signup extends Form {
            return  <Redirect to={`/success`} noThrow/>          
         }
         if(!loading && error){
-            return <div className="pt-5 pb-5"><div class="s-error">Something went wrong please try again</div></div>    
+            return <div className="pt-5 pb-5"><div className="s-error">Something went wrong please try again</div></div>    
         }
         if(loggedIn || localStorage.getItem( 'token' )){
             
