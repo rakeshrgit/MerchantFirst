@@ -42,7 +42,7 @@ class Form extends Component {
         //console.log(errors);
         this.setState({ errors:errors || {} });
         if (errors) return;
-        emailjs.sendForm('service_6z8bvma', 'template_bye6mum', e.target, 'YZL5bj80Ao8OtHAXP')
+        emailjs.sendForm('service_x4dassi', 'template_l6kwnet', e.target, 'ZCIT9mNNWKoRm9udl')
         .then((result) => {
             toast.success("Message Sent");
            
