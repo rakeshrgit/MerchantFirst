@@ -86,6 +86,6 @@ export function deletePost(id) {
   export function getsingle(id) {
     //console.log('id', id)
     const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/posts/" + id;
-    console.log('projectsEndpoint', projectsEndpoint)
+    //console.log('projectsEndpoint', projectsEndpoint)
     return apiService.get(projectsEndpoint);
   }  

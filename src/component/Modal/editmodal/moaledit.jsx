@@ -46,10 +46,11 @@ class ModaEdit extends Component {
                         </Modal.Header>
                         <Modal.Body>
                             <div className="form-section">
-                                <div className="form-data"><span className="modal-lable">Title:</span> <input value={this.state.title} onChange={(e) => this.titleHandler(e)}/></div>
+                                <div className="form-data mb-3"><span className="modal-lable">Title:</span> <input className="form-control" value={this.state.title} onChange={(e) => this.titleHandler(e)}/></div>
                                 {/* <div className="form-data"><span className="modal-lable">Content:</span><textarea   value={this.state.content} onChange={(e) => this.contentHandler(e)}></textarea></div> */}
                             </div>
                             <div>
+                                <span className="modal-lable">Descriotion:</span>
                                 <JoditEditor 
                                     value={this.state.content}
                                     onBlur={(content) => this.contentHandler(content)}

@@ -160,17 +160,17 @@ class Dashboard extends Component {
     <div className="post-info">{renderHTML(post.content.rendered.substring(0, 250))}<span>...</span></div> : renderHTML(post.content.rendered)}
                                                             </div>
                                                             <div className="p-action">
-                                                                {post.content.rendered.length > 250 ? <button onClick={()=>this.handleSinglePost(post.id)} className="btn btn-primary btn-xs"><i className='fa fa-eye'></i></button> : null}
-                                                                <button className="btn btn-primary btn-xs ml-1"
+                                                                {post.content.rendered.length > 250 ? <button onClick={()=>this.handleSinglePost(post.id)} className="bt-action"><i className='fa fa-eye fa-lg'></i></button> : null}
+                                                                <button className="bt-action ml-1"
                                                                     onClick={()=> {
                                                                         this.handleShow(index); 
                                                                         this.replaceModalItem(index); 
                                                                         
                                                                     }}
                                                                     >
-                                                                    <i className="fa fa-pencil"></i>
+                                                                    <i className="fa fa-pencil fa-lg"></i>
                                                                 </button>
-                                                                <button className="btn btn-danger btn-xs ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash"></i></button>
+                                                                <button className="bt-action ml-1" onClick={() => this.handleDelete(post.id)}><i className="fa fa-trash fa-lg"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>

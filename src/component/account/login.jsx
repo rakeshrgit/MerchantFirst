@@ -120,6 +120,7 @@ class Login extends Component {
           <div className="f-account">   
             <div className="container">
               <div className="f-account-inner">
+                <h3>Login</h3>
                 {errors && <Alert variant={"danger"}>{errors}</Alert>}
                   <form onSubmit={this.onFormSubmit}>
                       <div className="form-group">
