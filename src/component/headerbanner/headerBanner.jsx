@@ -63,12 +63,12 @@ class HeaderBanner extends Component {
                             <div className="bg-help">
                                 <SectionAbout  contentabout={item.acf.section_about} />
                             </div>
-                            
                             <div className="section-client">
                                 <div className="container">
                                     <ReviewSlider review={item.acf.review_slider}/>
                                 </div>
                             </div>
+                            
                         </div>    
                     )}           
                     <div className="f-contact" ref={this.scrollDiv}>

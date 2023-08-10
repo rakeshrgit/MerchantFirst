@@ -3,7 +3,7 @@ class AdvantageBlock extends Component {
     state = {  } 
     render() { 
         const{ contentadv } = this.props;
-       //console.log('advanage', contentadv)
+        //console.log('advanage', contentadv)
         return (
             <React.Fragment>
                 <h3 className="text-center">Advantage &amp; Benefit</h3>    
@@ -13,7 +13,7 @@ class AdvantageBlock extends Component {
                             <div className="about_box">
                                 <div className="adv-icon"><img src={item.image} alt="Merchant"/></div>
                                 <h4>{item.advantage_text}</h4>
-                                <div className="adv-desc">{item.advantage_description}</div>
+                                <div className="adv-desc" dangerouslySetInnerHTML={{__html: item.advantage_description}}></div>
                             </div>      
                         </div>
                     ))}

@@ -3,7 +3,7 @@ class SectionAbout extends Component {
     state = {  }
     render() { 
         const{contentabout} = this.props;
-        //console.log('dadaAbout', contentabout);
+        console.log('dadaAbout', contentabout);
         return ( 
             <React.Fragment>
                 <div className="container">

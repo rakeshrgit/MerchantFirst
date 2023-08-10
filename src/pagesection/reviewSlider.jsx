@@ -19,7 +19,7 @@ class ReviewSlider extends Component {
                       review.map((item, index)=>(
                         <div className="text-slide-info text-center" key={index}>
                             <img src={item.image} alt="Slider"/>
-                            <p>{item.slider_description}</p>
+                            <div dangerouslySetInnerHTML={{__html: item.slider_description}}></div>
                             <h6>{item.review_name}</h6>
                         </div>
                       ))  
