@@ -9,7 +9,7 @@ export function getPageData() {
 }
 
 export function getAboutData() {
-  const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/pages/28";
+  const projectsEndpoint = APIBASEURL + "wp-json/wp/v2/pages/13";
   return apiService.get(projectsEndpoint);
  // console.log('projectsEndpoint', projectsEndpoint)
 }

@@ -8,7 +8,7 @@ class About extends Component {
     }
     render() { 
         const { aboutData } = this.context;
-        //console.log('about', aboutData)
+        console.log('about', aboutData)
         return (
             <div className="f-account">
                 <div className="container">

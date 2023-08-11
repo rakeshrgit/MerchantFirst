@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="footer-copyright text-center">
                 <div className="container">
                     <div className="copyright-text text-center">
-                        Copyright © 2022 IStudy. All Rights Reserved.
+                        Copyright © 2023 IStudy. All Rights Reserved.
                     </div>
                 </div>
             </div>
