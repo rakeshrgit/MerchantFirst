@@ -34,7 +34,7 @@ export async function  signUp(data) {
       const siteURL = 'https://www.w3standards.in/'
       const loginData ={
         username:'admin',
-        password:'#@12345%&66777'
+        password:'admin@123456'
       };
       const res = await axios.post(`${siteURL}/wp-json/jwt-auth/v1/token`, loginData);
       if(undefined === res.data.token ){
@@ -53,7 +53,7 @@ export async function  signUp(data) {
     const siteURL = 'https://www.w3standards.in/'
       const loginData ={
         username:'admin',
-        password:'#@12345%&66777'
+        password:'admin@123456'
       };
       const res = await axios.post(`${siteURL}/wp-json/jwt-auth/v1/token`, loginData);
       //console.log('token', res.data.token)

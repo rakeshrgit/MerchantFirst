@@ -6,7 +6,7 @@ export const getAdminToken = async () => {
         headers : {},
         data:{
             username : "admin",
-            password : "#@12345%&66777"
+            password : "admin@123456"
         }
     }
 
