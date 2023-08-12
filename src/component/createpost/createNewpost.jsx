@@ -5,6 +5,7 @@ class CreateNewPost extends Component {
     state = { 
         title: '',
         content: '',
+        featured_media:null,
         postCreated: false,
         loading: false,
         message: '',
@@ -62,6 +63,15 @@ class CreateNewPost extends Component {
                                             name="content"
                                             onChange={ this.handleInputChange }
                                         ></textarea>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Featured Image</label>
+                                        <input 
+                                            className="form-control" 
+                                            type="file"
+                                            name="featured_image"
+                                            onChange={ this.handleInputChange }
+                                        />
                                     </div>
                                     <div className="text-right mb-4">
                                         <Button
